@@ -69,7 +69,7 @@ const config = {
 
   contact: {
     email: "regodonivanezekiel@gmail.com",
-    phone: "+63 961 310 3393",
+    phone: "+63 906 414 1604",
     location: "Quezon City, Metro Manila, Philippines",
     github: "https://github.com/IvanEzkl",
     linkedin: "https://www.linkedin.com/in/ivan-ezekiel-regodon-082a67379/",
