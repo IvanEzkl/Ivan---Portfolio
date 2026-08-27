@@ -143,7 +143,7 @@ export default function ProjectPreviewMockup({ projectId, isHovered }) {
 
             <div className="mockup-body mockup-terminal font-mono">
               <div className="terminal-line">
-                <span className="t-prompt">&gt;</span> <span className="t-cmd">render &lt;BrutalistArchitecture /&gt;</span>
+                <span className="t-prompt">&gt;</span> <span className="t-cmd">render &lt;FullStackApp /&gt;</span>
                 <span className="t-ok">[100% OK]</span>
               </div>
               <div className="terminal-line">

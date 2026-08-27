@@ -59,7 +59,7 @@ export default function AboutCard() {
             </p>
             <p>
               I specialise across the full-stack MERN ecosystem with a focus on
-              clean interfaces and scalable architectures. Lately deep into
+              clean interfaces and reliable software systems. Lately deep into
               LLM-driven workflows and resilient API backends.
             </p>
             <p className="about-outside-code">

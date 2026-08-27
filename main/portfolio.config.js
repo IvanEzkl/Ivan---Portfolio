@@ -23,8 +23,8 @@ const config = {
     },
     subtitle: "PORTFOLIO 2026",
     line1:
-      "Architecting scalable, high-performance digital infrastructure with a focus on structural integrity and",
-    highlight: "unapologetic design.",
+      "Developing scalable, high-performance web applications and software systems with a focus on clean code and",
+    highlight: "intuitive design.",
     basedIn: "QUEZON CITY, PH",
     focusedOn: "Full Stack & MERN Development",
     learning: "LLM Orchestration & System Analytics",
@@ -88,7 +88,7 @@ const config = {
         "AI-powered city-level job and skills matching portal. Prescriptive analytics engine identifies skill gaps and recommends targeted career training modules.",
       tags: ["REACT", "NODE.JS", "MONGODB", "PYTHON"],
       year: "2024-25",
-      archLabel: "SKILLMATCH / ARCHITECTURE",
+      archLabel: "SKILLMATCH / FULL STACK",
     },
     {
       id: "rice-trader",
@@ -102,7 +102,7 @@ const config = {
         "Full-stack SME inventory & sales management platform. Real-time stock levels, purchase orders, and JWT authentication built for small businesses.",
       tags: ["REACT", "NODE.JS", "MONGODB", "EXPRESS"],
       year: "2024",
-      archLabel: "RICE TRADER / ARCHITECTURE",
+      archLabel: "RICE TRADER / INVENTORY POS",
     },
     {
       id: "cookithow",
@@ -116,7 +116,7 @@ const config = {
         "Interactive recipe & cooking web app delivering step-by-step guides with interactive media and an optimised cross-device experience.",
       tags: ["REACT", "TAILWIND", "VITE"],
       year: "2024",
-      archLabel: "COOKITHOW / ARCHITECTURE",
+      archLabel: "COOKITHOW / WEB APP",
     },
     {
       id: "portfolio-v3",
@@ -130,7 +130,7 @@ const config = {
         "This site — designed and built from scratch with brutalist structure and glassmorphism polish. React + Vite + Tailwind CSS v4.",
       tags: ["REACT", "VITE", "TAILWIND"],
       year: "2026",
-      archLabel: "PORTFOLIO V3 / ARCHITECTURE",
+      archLabel: "PORTFOLIO V3 / SYSTEM",
     },
   ],
 
