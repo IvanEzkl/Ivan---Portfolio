@@ -63,7 +63,7 @@ export default function AboutCard() {
               LLM-driven workflows and resilient API backends.
             </p>
             <p className="about-outside-code">
-              Outside of code: GDG on Campus, AWS Learning Club, sound design,
+              Outside of code: AWS Legarda, sound design,
               and gaming.
             </p>
           </div>

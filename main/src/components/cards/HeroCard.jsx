@@ -8,19 +8,9 @@ export default function HeroCard() {
 
   return (
     <div className="hero-figma-container">
-      {/* Top Status & Location Badges */}
-      <div className="hero-top-bar">
-        <div className="hero-status-row">
-          <div className="hero-status-tag font-mono">
-            <span className="hero-status-dot" aria-hidden="true" />
-            <span>AVAILABLE FOR WORK</span>
-          </div>
-          <span className="hero-loc-tag font-mono">{config.bio.basedIn}</span>
-        </div>
-
-        <div className="hero-3d-core">
-          <ThreeHeroCore />
-        </div>
+      {/* 3D Core Top-Right Floating Accent */}
+      <div className="hero-3d-core-anchor">
+        <ThreeHeroCore />
       </div>
 
       {/* Eyebrow Line */}

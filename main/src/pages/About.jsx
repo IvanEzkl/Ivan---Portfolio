@@ -69,7 +69,7 @@ export default function About() {
         </svg>
       ),
       title: "Technical Leadership",
-      desc: "GDG on Campus & AWS Learning Club workshops & infra",
+      desc: "AWS Legarda & developer community workshops & infra",
     },
   ];
 
@@ -102,8 +102,7 @@ export default function About() {
     "RESPONSIVE UI DESIGN",
     "SHIPPING SKILLMATCH",
     "SECURE REST APIS",
-    "GDG ON CAMPUS",
-    "AWS LEARNING CLUB",
+    "AWS LEGARDA",
     "CONTINUOUS ITERATION",
   ];
 
@@ -177,7 +176,7 @@ export default function About() {
                 I specialize across the full-stack MERN ecosystem with a focus on clean interfaces and scalable architectures. Lately, I've been deep into LLM-driven workflows, prompt engineering, and building resilient API backends.
               </p>
               <p>
-                When I'm not writing code, you can find me contributing to tech events with GDG on Campus and AWS Learning Club, exploring sound design, or gaming.
+                When I'm not writing code, you can find me contributing to tech events with AWS Legarda, exploring sound design, or gaming.
               </p>
             </div>
           </div>

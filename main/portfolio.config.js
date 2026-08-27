@@ -147,10 +147,10 @@ const config = {
           "Building NLP-powered tooling and contributing to production features across the full stack using React, Node.js, and Python.",
       },
       {
-        id: "gdg-tech-com",
+        id: "aws-legarda",
         isCurrent: true,
         role: "Technical Committee",
-        company: "GDG on Campus • NU Manila",
+        company: "AWS Legarda",
         location: "Manila",
         period: "Aug 2025 — Present",
         description:
@@ -174,14 +174,14 @@ const config = {
         id: "gdg-member",
         role: "Technical Committee Member",
         org: "GDG on Campus • NU",
-        period: "Aug 2025 — June 2026",
+        period: "Aug 2025 — July 2026",
         description:
           "Supported technical logistics for college IT events and assisted in campus workshops.",
       },
       {
         id: "aws-club",
         role: "Technical Committee Member",
-        org: "AWS Learning Club",
+        org: "AWS Legarda",
         period: "Feb 2025 — Present",
         description:
           "Delivering beginner-friendly cloud workshops and technology seminars for fellow students.",
