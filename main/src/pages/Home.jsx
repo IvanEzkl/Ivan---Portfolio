@@ -104,6 +104,7 @@ export default function Home() {
             <span className="section-eyebrow">BIOGRAPHY</span>
             <h2 className="section-heading about-heading">
               ABOUT<br />ME
+              
             </h2>
           </div>
         </div>

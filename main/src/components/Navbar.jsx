@@ -74,7 +74,12 @@ export default function Navbar() {
           onClick={(e) => handleNavClick("overview", e)}
           className="site-header__logo font-mono"
         >
-          {config.name.toUpperCase()}
+          <img
+            src="/logo.png"
+            alt="Ivan Ezekiel Logo"
+            className="site-header__logo-img"
+          />
+          <span>{config.name.toUpperCase()}</span>
         </a>
 
         {/* Center: Nav links */}

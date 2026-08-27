@@ -809,6 +809,35 @@ img, svg {
   margin-top: 14px;
 }
 
+.site-header__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 800;
+  font-size: 0.92rem;
+  letter-spacing: 0.06em;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.site-header__logo:hover {
+  opacity: 0.85;
+}
+
+.site-header__logo-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  border-radius: 2px;
+  display: block;
+}
+
+:root[data-theme="dark"] .site-header__logo-img,
+:root:not([data-theme="light"]) .site-header__logo-img {
+  filter: invert(1) brightness(1.8);
+}
+
 .site-header__resume-btn {
   background: transparent;
   color: var(--text-primary);
