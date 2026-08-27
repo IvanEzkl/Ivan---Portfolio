@@ -1,94 +1,104 @@
 import React from "react";
-import { useCardGlow } from "../../hooks/useCardGlow";
 import { useTypewriter } from "../../hooks/useTypewriter";
 import config from "../../../portfolio.config";
+import ThreeHeroCore from "../ThreeHeroCore";
 
 export default function HeroCard() {
-  const cardRef = useCardGlow();
   const currentRole = useTypewriter(config.roles);
 
   return (
-    <div
-      ref={cardRef}
-      className="card col-span-4 flex flex-col justify-between"
-      style={{ padding: "32px 32px" }}
-    >
-      {/* Top Header */}
-      <div>
-        <div className="flex items-center justify-between mb-2">
-          <span className="eyebrow" style={{ margin: 0 }}>
-            {config.title}
-          </span>
-          <span className="project-status">Available for hire</span>
+    <div className="hero-figma-container">
+      {/* Top Status & Location Badges */}
+      <div className="hero-top-bar">
+        <div className="hero-status-row">
+          <div className="hero-status-tag font-mono">
+            <span className="hero-status-dot" aria-hidden="true" />
+            <span>AVAILABLE FOR WORK</span>
+          </div>
+          <span className="hero-loc-tag font-mono">{config.bio.basedIn}</span>
         </div>
 
-        <h1
-          className="font-head"
-          style={{
-            fontSize: "clamp(2rem, 4.2vw, 3rem)",
-            fontWeight: 700,
-            lineHeight: 1.1,
-            letterSpacing: "-0.03em",
-          }}
-        >
-          {config.name}
-        </h1>
-      </div>
-
-      {/* Middle: Expanded Typing Hero Section */}
-      <div
-        className="flex-1 flex flex-col justify-center"
-        style={{ padding: "10px 0 14px 0" }}
-      >
-        <div style={{ marginBottom: "6px" }}>
-          <span
-            className="font-mono text-muted"
-            style={{
-              fontSize: "clamp(1.05rem, 2vw, 1.3rem)",
-              fontWeight: 500,
-              letterSpacing: "0.02em",
-            }}
-          >
-            I am a
-          </span>
-        </div>
-
-        {/* Typing Animation Line */}
-        <div
-          className="font-head text-accent"
-          style={{
-            fontSize: "clamp(2.6rem, 5.8vw, 3.9rem)",
-            fontWeight: 800,
-            letterSpacing: "-0.035em",
-            lineHeight: 1.08,
-            minHeight: "clamp(5.5rem, 10vw, 7.5rem)",
-            display: "flex",
-            alignItems: "center",
-            flexWrap: "wrap",
-          }}
-        >
-          <span>{currentRole}</span>
-          <span
-            className="cursor"
-            style={{
-              height: "0.95em",
-              width: "6px",
-              marginLeft: "8px",
-              borderRadius: "2px",
-            }}
-            aria-hidden="true"
-          />
+        <div className="hero-3d-core">
+          <ThreeHeroCore />
         </div>
       </div>
 
-      {/* Bio text at the bottom */}
-      <div style={{ paddingTop: "12px" }}>
-        <p
-          className="text-muted"
-          style={{ fontSize: "1.05rem", lineHeight: 1.65, maxWidth: "720px" }}
-        >
-          {config.bio.line1}
+      {/* Eyebrow Line */}
+      <div className="hero-portfolio-tag font-mono">
+        IVAN EZEKIEL — PORTFOLIO  
+      </div>
+
+      {/* Huge Brutalist Headline */}
+      <h1 className="hero-brutalist-title font-head">
+        <span className="title-white">BUILDING</span>
+        <span className="title-orange">ROBUST</span>
+        <span className="title-white">SYSTEMS</span>
+      </h1>
+
+      {/* Dynamic Typewriter Role */}
+      <div className="hero-subrole font-mono">
+        <span className="hero-dash">—</span>
+        <span className="hero-typing-role">{currentRole}</span>
+        <span className="hero-cursor" aria-hidden="true">|</span>
+      </div>
+
+      {/* Description & Action Buttons Row */}
+      <div className="hero-middle-row">
+        <p className="hero-para font-mono">
+          {config.bio.line1}{" "}
+          <span className="hero-highlight">{config.bio.highlight}</span>
         </p>
+
+        <div className="hero-btn-group">
+          <a
+            href="#work"
+            onClick={(e) => {
+              e.preventDefault();
+              const el = document.getElementById("work");
+              if (el) {
+                if (el.offsetHeight < window.innerHeight - 70) {
+                  el.scrollIntoView({ behavior: "smooth", block: "center" });
+                } else {
+                  el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+              }
+            }}
+            className="btn-explore font-mono"
+          >
+            <span>EXPLORE WORK</span>
+            <span className="btn-arrow">→</span>
+          </a>
+          <a
+            href="#connect"
+            onClick={(e) => {
+              e.preventDefault();
+              const el = document.getElementById("connect");
+              if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+            className="btn-connect font-mono"
+          >
+            <span>CONNECT</span>
+          </a>
+          <a
+            href={config.resumeUrl || "/resume.pdf"}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-resume font-mono"
+          >
+            <span>RESUME</span>
+            <span className="btn-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      {/* 4-Column Bottom Stats Box */}
+      <div className="hero-stats-box">
+        {config.stats.map((stat, idx) => (
+          <div key={idx} className="hero-stat-cell">
+            <div className="stat-num font-head">{stat.value}</div>
+            <div className="stat-desc font-mono">{stat.label}</div>
+          </div>
+        ))}
       </div>
     </div>
   );

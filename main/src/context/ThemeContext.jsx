@@ -9,7 +9,7 @@ export function ThemeProvider({ children }) {
   });
 
   const [accent, setAccent] = useState(() => {
-    return localStorage.getItem("portfolio_accent") || "#a855f7";
+    return localStorage.getItem("portfolio_accent") || "#ff6b00";
   });
 
   const [scale, setScale] = useState(() => {

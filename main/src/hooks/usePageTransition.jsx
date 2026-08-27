@@ -93,8 +93,14 @@ export function TransitionProvider({ children }) {
 
 export function usePageTransition() {
   const context = useContext(TransitionContext);
+  const navigate = useNavigate();
   if (!context) {
-    throw new Error("usePageTransition must be used within a TransitionProvider");
+    return {
+      transitionTo: (to) => {
+        navigate(to);
+      },
+      transitionState: { active: false, expanding: false, x: 0, y: 0 },
+    };
   }
   return context;
 }

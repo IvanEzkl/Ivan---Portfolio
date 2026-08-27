@@ -38,9 +38,13 @@ export default function ClockCard() {
           style={{
             fontSize: "0.65rem",
             padding: "2px 7px",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "5px",
           }}
         >
-          ● Live Sync
+          <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--accent)" }} />
+          LIVE SYNC
         </span>
       </div>
 

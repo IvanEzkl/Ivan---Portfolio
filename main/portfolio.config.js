@@ -6,42 +6,58 @@ const config = {
   name: "Ivan Ezekiel",
   title: "Hello World, my name is",
   timezone: "Asia/Manila",
+  resumeUrl: "/Resume - Regodon.pdf",
 
   roles: [
-    "Junior Developer",
-    "Full Stack Developer",
     "UI/UX Enthusiast",
-    "Problem Solver",
+    "Full Stack Developer",
+    "Software Engineer",
+    "Systems Builder",
   ],
 
   bio: {
+    heroHeadline: {
+      line1: "BUILDING",
+      line2: "ROBUST",
+      line3: "SYSTEMS",
+    },
+    subtitle: "PORTFOLIO 2026",
     line1:
-      "I build responsive web applications with a focus on clean interfaces and reliable systems.",
-    highlight: "bridging practical backend architecture with focused frontend design",
-    line2:
-      "Currently engineering modern web solutions and exploring data-driven features.",
-    basedIn: "Quezon City, PH",
+      "Architecting scalable, high-performance digital infrastructure with a focus on structural integrity and",
+    highlight: "unapologetic design.",
+    basedIn: "QUEZON CITY, PH",
     focusedOn: "Full Stack & MERN Development",
     learning: "LLM Orchestration & System Analytics",
     outsideOfCode: "Indie Music & Tech Community Events",
   },
 
+  stats: [
+    { value: "3+", label: "YEARS EXPERIENCE" },
+    { value: "20+", label: "PROJECTS SHIPPED" },
+    { value: "MERN", label: "CORE STACK" },
+    { value: "NU Manila", label: "UNIVERSITY" },
+  ],
+
   tools: [
     {
-      category: "Frontend",
-      items: ["React", "Next.js", "TypeScript", "Vite", "Tailwind CSS", "Framer Motion", "HTML5", "CSS3"],
+      category: "FRONTEND",
+      items: ["React", "Next.js", "TypeScript", "Vite", "Tailwind CSS", "HTML5", "CSS3"],
     },
     {
-      category: "Backend",
-      items: ["Node.js", "Express", "REST APIs", "GraphQL", "Python", "FastAPI"],
+      category: "BACKEND",
+      items: ["Node.js", "Express", "Python", "FastAPI", "REST APIs"],
     },
     {
-      category: "Database",
-      items: ["MongoDB", "PostgreSQL", "MySQL", "Redis", "Prisma", "Mongoose"],
+      category: "DATABASE",
+      items: ["MongoDB", "PostgreSQL", "MySQL", "Redis", "Prisma"],
     },
     {
-      category: "Workflow",
-      items: ["Git", "GitHub", "Docker", "Figma", "VS Code", "Postman", "Vercel", "Linux"],
+      category: "DEVOPS",
+      items: ["Git", "GitHub", "Docker", "Vercel", "Linux", "Figma"],
+    },
+    {
+      category: "LEARNING",
+      items: ["LLM Orchestration", "Prompt Engineering", "tRPC", "Bun"],
     },
   ],
 
@@ -62,116 +78,131 @@ const config = {
   projects: [
     {
       id: "skillmatch",
-      title: "SkillMatch",
+      num: "01",
+      title: "SKILLMATCH",
       url: "skillmatch.app",
       github: "https://github.com/IvanEzkl/skillmatch",
-      status: "In Progress",
+      status: "IN PROGRESS",
       featured: true,
       description:
-        "An AI-powered city-level job and skills matching portal using the MERN stack with prescriptive analytics logic to identify candidate skill gaps and suggest targeted career training modules.",
-      tags: ["React", "Node.js", "Express", "MongoDB", "Python"],
-      year: "2024 — Present",
-      mockType: "skillmatch",
+        "AI-powered city-level job and skills matching portal. Prescriptive analytics engine identifies skill gaps and recommends targeted career training modules.",
+      tags: ["REACT", "NODE.JS", "MONGODB", "PYTHON"],
+      year: "2024-25",
+      archLabel: "SKILLMATCH / ARCHITECTURE",
     },
     {
       id: "rice-trader",
-      title: "Rice Trader",
+      num: "02",
+      title: "RICE TRADER",
       url: "ricetrader.app",
       github: "https://github.com/IvanEzkl/rice-trader",
-      status: "Shipped",
+      status: "SHIPPED",
       featured: false,
       description:
-        "Full-stack SME inventory & sales management platform streamlining trading operations with real-time stock levels, purchase orders, JWT auth, and automated audit logs.",
-      tags: ["React", "Node.js", "Express", "MongoDB"],
+        "Full-stack SME inventory & sales management platform. Real-time stock levels, purchase orders, and JWT authentication built for small businesses.",
+      tags: ["REACT", "NODE.JS", "MONGODB", "EXPRESS"],
       year: "2024",
-      mockType: "ricetrader",
+      archLabel: "RICE TRADER / ARCHITECTURE",
     },
     {
       id: "cookithow",
-      title: "CookItHow",
+      num: "03",
+      title: "COOKITHOW",
       url: "cookithow.app",
       github: "https://github.com/IvanEzkl/cookithow",
-      status: "Shipped",
+      status: "SHIPPED",
       featured: false,
       description:
-        "Interactive recipe & cooking web application delivering step-by-step recipe guides, interactive media assets, and optimized cross-device performance.",
-      tags: ["React", "HTML5", "CSS3", "Git"],
+        "Interactive recipe & cooking web app delivering step-by-step guides with interactive media and an optimised cross-device experience.",
+      tags: ["REACT", "TAILWIND", "VITE"],
       year: "2024",
-      mockType: "cookithow",
+      archLabel: "COOKITHOW / ARCHITECTURE",
+    },
+    {
+      id: "portfolio-v3",
+      num: "04",
+      title: "PORTFOLIO V3",
+      url: "ivanezekiel.dev",
+      github: "https://github.com/IvanEzkl/Ivan---Portfolio",
+      status: "LIVE",
+      featured: false,
+      description:
+        "This site — designed and built from scratch with brutalist structure and glassmorphism polish. React + Vite + Tailwind CSS v4.",
+      tags: ["REACT", "VITE", "TAILWIND"],
+      year: "2026",
+      archLabel: "PORTFOLIO V3 / ARCHITECTURE",
     },
   ],
 
-  experience: [
-    {
-      id: "3am-intern",
-      badge: "3AM",
-      role: "Developer Intern",
-      period: "Aug 2026 — Present",
-      company: "NLP Business • 3am Media & Technology",
-      headline: "Developing NLP pipelines, automated business tools, and responsive software solutions.",
-      points: [
-        "Engineering full-stack web software and natural language processing pipelines for client and business workflows.",
-        "Developing scalable backend APIs and integrating automated analytics logic for media and technology services.",
-        "Collaborating across agile sprints to design, test, and deploy resilient digital products.",
-      ],
-    },
-    {
-      id: "gdg-nu",
-      badge: "GDG",
-      role: "Technical Committee Member",
-      period: "Aug 2025 — Present",
-      company: "GDG on Campus • NU Manila",
-      headline: "Managed technical infrastructure and workshop environments for 40+ attendees.",
-      points: [
-        "Managed technical infrastructure and hardware setup for workshops including Build With AI and Zero to One with Firebase Studio, catering to 40+ attendees.",
-        "Configured development environments, presentation tools, and network hardware to maintain continuous event uptime.",
-        "Assisted participants with real-time software setup and system troubleshooting during live technical sessions.",
-      ],
-    },
-    {
-      id: "aws-learning-club",
-      badge: "AWS",
-      role: "Technical Committee Member",
-      period: "Feb 2025 — Present",
-      company: "AWS Learning Club • Legarda & Wizard Circle",
-      headline: "Executed end-to-end tech setup and hardware troubleshooting across tech events.",
-      points: [
-        "Executed end-to-end setup and hardware troubleshooting for laptops, projection systems, and audio-visual equipment across university tech events.",
-        "Collaborated with event leads to coordinate technical logistics, preventing equipment bottlenecks and setup delays.",
-      ],
-    },
-    {
-      id: "techfiesta",
-      badge: "TF",
-      role: "Technical & Design Coordinator",
-      period: "March 2025",
-      company: "TechFiesta 2.0 • National University",
-      headline: "Spearheaded promotional branding assets and spatial technical equipment planning.",
-      points: [
-        "Designed digital promotional assets and branding graphics using Figma and Canva.",
-        "Planned booth layouts and technical equipment placement to optimize spatial flow and power accessibility.",
-      ],
-    },
-    {
-      id: "skillmatch-exp",
-      badge: "SM",
-      role: "Full-Stack Developer • SkillMatch",
-      period: "2024 — 2025",
-      company: "AI-Powered Job & Skills Portal",
-      headline: "Engineered city-level job matching portal with prescriptive skill-gap analytics.",
-      points: [
-        "Built city-level job and skills matching portal using the MERN stack to connect local applicants with employment opportunities.",
-        "Integrated prescriptive analytics logic to identify candidate skill gaps and suggest targeted training modules.",
-        "Designed responsive UI components in React and created backend REST APIs to process user profiles, job postings, and skill metrics.",
-      ],
-    },
-  ],
+  trajectory: {
+    experience: [
+      {
+        id: "3am",
+        isCurrent: true,
+        role: "Developer Intern",
+        company: "3AM Media & Technology",
+        location: "Remote",
+        period: "Aug 2026 — Present",
+        description:
+          "Building NLP-powered tooling and contributing to production features across the full stack using React, Node.js, and Python.",
+      },
+      {
+        id: "gdg-tech-com",
+        isCurrent: true,
+        role: "Technical Committee",
+        company: "GDG on Campus • NU Manila",
+        location: "Manila",
+        period: "Aug 2025 — Present",
+        description:
+          "Organising developer events, workshops, and hackathons. Leading technical sessions on web development and cloud fundamentals.",
+      },
+    ],
+    education: [
+      {
+        id: "nu-bsit",
+        isCurrent: true,
+        degree: "BS Information Technology",
+        school: "National University",
+        location: "Manila, NCR",
+        period: "August 2023 — Present",
+        description:
+          "Core coursework in software engineering, data structures, databases, and systems analysis. Active in campus developer orgs.",
+      },
+    ],
+    organizations: [
+      {
+        id: "gdg-member",
+        role: "Technical Committee Member",
+        org: "GDG on Campus • NU",
+        period: "Aug 2025 — June 2026",
+        description:
+          "Supported technical logistics for college IT events and assisted in campus workshops.",
+      },
+      {
+        id: "aws-club",
+        role: "Technical Committee Member",
+        org: "AWS Learning Club",
+        period: "Feb 2025 — Present",
+        description:
+          "Delivering beginner-friendly cloud workshops and technology seminars for fellow students.",
+      },
+      {
+        id: "techfiesta",
+        role: "Tech & Design Coordinator",
+        org: "TechFiesta 2.0 • NU",
+        period: "March 2025",
+        description:
+          "Coordinated technical logistics and UI/UX design for the university's flagship tech event.",
+      },
+    ],
+  },
 
   accentPalette: [
-    { name: "Purple", value: "#a855f7" },
+    { name: "Orange", value: "#ff6b00" },
     { name: "Green",  value: "#22c55e" },
     { name: "Blue",   value: "#3b82f6" },
     { name: "Amber",  value: "#f59e0b" },
+    { name: "Purple", value: "#a855f7" },
     { name: "Red",    value: "#ef4444" },
   ],
 };
