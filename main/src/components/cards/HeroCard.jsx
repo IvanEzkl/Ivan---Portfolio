@@ -56,10 +56,13 @@ export default function HeroCard() {
               e.preventDefault();
               const el = document.getElementById("work");
               if (el) {
-                if (el.offsetHeight < window.innerHeight - 70) {
-                  el.scrollIntoView({ behavior: "smooth", block: "center" });
+                const elementRect = el.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                if (el.offsetHeight < window.innerHeight - 80) {
+                  const middle = absoluteElementTop - (window.innerHeight / 2) + (el.offsetHeight / 2);
+                  window.scrollTo({ top: Math.max(0, middle), behavior: "smooth" });
                 } else {
-                  el.scrollIntoView({ behavior: "smooth", block: "start" });
+                  window.scrollTo({ top: Math.max(0, absoluteElementTop - 30), behavior: "smooth" });
                 }
               }
             }}
@@ -73,14 +76,23 @@ export default function HeroCard() {
             onClick={(e) => {
               e.preventDefault();
               const el = document.getElementById("connect");
-              if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+              if (el) {
+                const elementRect = el.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                if (el.offsetHeight < window.innerHeight - 80) {
+                  const middle = absoluteElementTop - (window.innerHeight / 2) + (el.offsetHeight / 2);
+                  window.scrollTo({ top: Math.max(0, middle), behavior: "smooth" });
+                } else {
+                  window.scrollTo({ top: Math.max(0, absoluteElementTop - 30), behavior: "smooth" });
+                }
+              }
             }}
             className="btn-connect font-mono"
           >
             <span>CONNECT</span>
           </a>
           <a
-            href={config.resumeUrl || "/resume.pdf"}
+            href={config.resumeUrl || "/Resume - Regodon.pdf"}
             target="_blank"
             rel="noreferrer"
             className="btn-resume font-mono"
@@ -89,16 +101,6 @@ export default function HeroCard() {
             <span className="btn-arrow">↗</span>
           </a>
         </div>
-      </div>
-
-      {/* 4-Column Bottom Stats Box */}
-      <div className="hero-stats-box">
-        {config.stats.map((stat, idx) => (
-          <div key={idx} className="hero-stat-cell">
-            <div className="stat-num font-head">{stat.value}</div>
-            <div className="stat-desc font-mono">{stat.label}</div>
-          </div>
-        ))}
       </div>
     </div>
   );

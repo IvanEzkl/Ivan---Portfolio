@@ -42,10 +42,13 @@ export default function Navbar() {
       }
       const el = document.getElementById(target);
       if (el) {
-        if (el.offsetHeight < window.innerHeight - 70) {
-          el.scrollIntoView({ behavior: "smooth", block: "center" });
+        const elementRect = el.getBoundingClientRect();
+        const absoluteElementTop = elementRect.top + window.pageYOffset;
+        if (el.offsetHeight < window.innerHeight - 80) {
+          const middle = absoluteElementTop - (window.innerHeight / 2) + (el.offsetHeight / 2);
+          window.scrollTo({ top: Math.max(0, middle), behavior: "smooth" });
         } else {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          window.scrollTo({ top: Math.max(0, absoluteElementTop - 30), behavior: "smooth" });
         }
       }
     };
