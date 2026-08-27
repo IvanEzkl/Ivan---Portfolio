@@ -2245,6 +2245,35 @@ img, svg {
   transform: scale(1);
 }
 
+.about-photo-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(10, 10, 15, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.about-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+  animation: pulse 2s ease infinite;
+}
+
 .about-photo-caption {
   display: flex;
   flex-direction: column;

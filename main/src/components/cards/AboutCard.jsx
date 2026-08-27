@@ -23,18 +23,18 @@ export default function AboutCard() {
               alt="Ivan Ezekiel"
               className="about-photo-img-main about-photo-img--primary"
             />
-            <div className="about-photo-overlay" />
-            <div className="about-photo-tag font-mono">
-              <span className="about-dot" />
-              <span>ONLINE</span>
-            </div>
+            <img
+              src="/about-photo-2.jpg"
+              alt="Ivan Ezekiel Hover"
+              className="about-photo-img-main about-photo-img--hover"
+            />
           </div>
 
-          <div className="about-name-block">
-            <h3 className="about-name font-head">{config.name}</h3>
-            <p className="about-title-role font-mono">
+          <div className="about-photo-caption">
+            <h3 className="about-caption-name font-head">{config.name}</h3>
+            <span className="about-caption-role font-mono">
               Full-Stack Developer & UI Engineer
-            </p>
+            </span>
           </div>
         </div>
 
