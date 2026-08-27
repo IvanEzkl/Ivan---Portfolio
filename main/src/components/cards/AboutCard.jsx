@@ -3,7 +3,7 @@ import { useClock } from "../../hooks/useClock";
 import config from "../../../portfolio.config";
 
 export default function AboutCard() {
-  const { hostTimeStr, visitorTimeStr } = useClock(config.timezone);
+  const { hostTimeStr, visitorTimeStr, visitorOffset } = useClock(config.timezone);
 
   const quickFacts = [
     { label: "ROLE", value: "Dev Intern • 3AM" },
@@ -23,30 +23,26 @@ export default function AboutCard() {
               alt="Ivan Ezekiel"
               className="about-photo-img-main about-photo-img--primary"
             />
-            <img
-              src="/about-photo-2.jpg"
-              alt="Ivan Ezekiel Hover"
-              className="about-photo-img-main about-photo-img--hover"
-            />
+            <div className="about-photo-overlay" />
+            <div className="about-photo-tag font-mono">
+              <span className="about-dot" />
+              <span>ONLINE</span>
+            </div>
           </div>
 
-          <div className="about-photo-caption">
-            <h3 className="about-caption-name font-head">IVAN EZEKIEL</h3>
-            <span className="about-caption-role font-mono">Developer • Designer</span>
+          <div className="about-name-block">
+            <h3 className="about-name font-head">{config.name}</h3>
+            <p className="about-title-role font-mono">
+              Full-Stack Developer & UI Engineer
+            </p>
           </div>
         </div>
 
-        {/* ── 2. Middle Card: Narrative Story ─────────────────── */}
-        <div className="about-card about-card--narrative">
-          <div className="about-tag-pill font-mono">
-            <span>A BIT ABOUT ME</span>
-          </div>
+        {/* ── 2. Middle Card: Narrative Bio ───────────────────── */}
+        <div className="about-card about-card--bio">
+          <span className="about-bio-header font-mono">ABOUT ME</span>
 
-          <h3 className="about-narrative-title font-head">
-            The person behind the code.
-          </h3>
-
-          <div className="about-narrative-text font-mono">
+          <div className="about-bio-text font-mono">
             <p>
               I'm a BS IT student at{" "}
               <strong>National University Manila (2023–2027)</strong>, and
@@ -97,7 +93,9 @@ export default function AboutCard() {
 
           {/* Visitor Local Time Clock */}
           <div className="about-clock-block font-mono">
-            <span className="about-clock-label">YOUR LOCAL TIME</span>
+            <span className="about-clock-label">
+              YOUR LOCAL TIME {visitorOffset ? `(${visitorOffset})` : ""}
+            </span>
             <div className="about-clock-digits font-head">{visitorTimeStr}</div>
           </div>
         </div>
