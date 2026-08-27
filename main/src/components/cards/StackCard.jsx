@@ -42,14 +42,7 @@ export default function StackCard() {
   ];
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))",
-        gap: "24px",
-        width: "100%",
-      }}
-    >
+    <div className="stack-card-grid">
       {categoryMeta.map((group, index) => (
         <div
           key={group.category}

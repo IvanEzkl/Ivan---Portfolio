@@ -159,13 +159,7 @@ export default function WorkShowcase() {
       </div>
 
       {/* 2. Grid of Secondary Projects (Rice Trader & CookItHow) */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
-          gap: "24px",
-        }}
-      >
+      <div className="responsive-two-grid">
         {otherProjects.map((project, idx) => (
           <div
             key={project.id}

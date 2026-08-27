@@ -168,8 +168,8 @@ export default function ExperienceCard() {
               {isExpanded && (
                 <div
                   id={`exp-content-${item.id}`}
+                  className="exp-content-block"
                   style={{
-                    padding: "0 20px 20px 72px",
                     animation: "fadeIn 0.25s ease",
                   }}
                 >

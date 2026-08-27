@@ -44,14 +44,8 @@ export default function ClockCard() {
         </span>
       </div>
 
-      {/* Dual Clocks Side-by-Side */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "20px",
-        }}
-      >
+      {/* Dual Clocks Side-by-Side (Responsive Grid) */}
+      <div className="clock-dual-grid">
         {/* Host Manila Time */}
         <div className="flex flex-col gap-1">
           <div className="flex items-center justify-between">
@@ -71,7 +65,7 @@ export default function ClockCard() {
           <div
             className="clock-time"
             style={{
-              fontSize: "clamp(1.5rem, 2.2vw, 1.85rem)",
+              fontSize: "clamp(1.4rem, 2.2vw, 1.85rem)",
               fontWeight: 800,
               letterSpacing: "-0.03em",
               margin: "2px 0",
@@ -98,13 +92,7 @@ export default function ClockCard() {
         </div>
 
         {/* Visitor Local Time */}
-        <div
-          className="flex flex-col gap-1"
-          style={{
-            paddingLeft: "16px",
-            borderLeft: "1px solid var(--border)",
-          }}
-        >
+        <div className="flex flex-col gap-1 clock-dual-col-divider">
           <div className="flex items-center justify-between">
             <span
               className="font-mono text-muted"

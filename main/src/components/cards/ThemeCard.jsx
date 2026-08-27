@@ -33,14 +33,7 @@ export default function ThemeCard() {
         </span>
       </div>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1.1fr 1fr",
-          gap: "18px",
-          alignItems: "center",
-        }}
-      >
+      <div className="theme-card-grid">
         {/* Color Mode Buttons */}
         <div className="flex flex-col gap-1.5">
           <span

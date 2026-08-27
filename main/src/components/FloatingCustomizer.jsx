@@ -17,8 +17,6 @@ export default function FloatingCustomizer() {
     setRadius,
     speed,
     setSpeed,
-    patternType,
-    setPatternType,
     copyCssVariables,
   } = useTheme();
 
@@ -33,8 +31,6 @@ export default function FloatingCustomizer() {
     { label: "Normal", value: "0.65s" },
     { label: "Smooth", value: "1.0s" },
   ];
-
-  const patternOptions = ["dots", "lines", "grid", "none"];
 
   return (
     <aside className="customizer" aria-label="Theme Customizer">
@@ -162,22 +158,6 @@ export default function FloatingCustomizer() {
             </div>
           </div>
 
-          {/* Background Pattern */}
-          <div className="customizer__row">
-            <label className="customizer__label">Pattern Mode</label>
-            <div className="speed-btns">
-              {patternOptions.map((p) => (
-                <button
-                  key={p}
-                  className={`speed-btn ${patternType === p ? "active" : ""}`}
-                  onClick={() => setPatternType(p)}
-                  style={{ textTransform: "capitalize" }}
-                >
-                  {p}
-                </button>
-              ))}
-            </div>
-          </div>
 
           {/* Copy Variables Button */}
           <button

@@ -80,14 +80,7 @@ export default function Home() {
           <AboutCard />
 
           {/* Bottom 2-Column Grid: Compact Time & Appearance Widgets */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
-              gap: "24px",
-              width: "100%",
-            }}
-          >
+          <div className="responsive-two-grid">
             <ClockCard />
             <ThemeCard />
           </div>

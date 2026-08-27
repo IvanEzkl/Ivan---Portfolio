@@ -84,25 +84,17 @@ export default function ContactCard() {
           }}
         >
           <span className="text-accent" style={{ marginRight: "2px" }}>
-            /
+            
           </span>
-          contacts
+          Connect with me!
         </h2>
         <p className="text-muted font-mono" style={{ fontSize: "0.95rem" }}>
           Get in touch, discuss a project, or explore full-time / QA roles
         </p>
       </div>
 
-      {/* Main 2-Column Grid */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))",
-          gap: "36px",
-          alignItems: "start",
-          width: "100%",
-        }}
-      >
+      {/* Main 2-Column Responsive Grid */}
+      <div className="contact-main-grid">
         {/* Left Column: Direct Communication & Intro */}
         <div className="flex flex-col gap-6">
           <p
@@ -376,13 +368,7 @@ export default function ContactCard() {
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 {/* Row 1: Name & Email */}
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: "16px",
-                  }}
-                >
+                <div className="contact-form-row">
                   <div className="flex flex-col gap-1.5">
                     <label className="font-mono text-muted" style={{ fontSize: "0.75rem", fontWeight: 600 }}>
                       Your Name <span className="text-accent">*</span>

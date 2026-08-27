@@ -9,7 +9,7 @@ export function ThemeProvider({ children }) {
   });
 
   const [accent, setAccent] = useState(() => {
-    return localStorage.getItem("portfolio_accent") || config.accentPalette[0].value;
+    return localStorage.getItem("portfolio_accent") || "#a855f7";
   });
 
   const [scale, setScale] = useState(() => {
@@ -25,15 +25,11 @@ export function ThemeProvider({ children }) {
   });
 
   const [gridSize, setGridSize] = useState(() => {
-    return parseInt(localStorage.getItem("portfolio_grid_size"), 10) || 32;
+    return parseInt(localStorage.getItem("portfolio_grid_size"), 10) || 40;
   });
 
   const [patternType, setPatternType] = useState(() => {
-    return localStorage.getItem("portfolio_pattern_type") || "dots"; // 'dots' | 'lines' | 'grid' | 'none'
-  });
-
-  const [collapsedRail, setCollapsedRail] = useState(() => {
-    return localStorage.getItem("portfolio_collapsed_rail") === "true";
+    return localStorage.getItem("portfolio_pattern_type") || "grid"; // 'grid' | 'dots' | 'lines' | 'none'
   });
 
   const toggleMode = () => {
@@ -57,8 +53,7 @@ export function ThemeProvider({ children }) {
     localStorage.setItem("portfolio_speed", speed);
     localStorage.setItem("portfolio_grid_size", gridSize.toString());
     localStorage.setItem("portfolio_pattern_type", patternType);
-    localStorage.setItem("portfolio_collapsed_rail", collapsedRail.toString());
-  }, [mode, accent, scale, radius, speed, gridSize, patternType, collapsedRail]);
+  }, [mode, accent, scale, radius, speed, gridSize, patternType]);
 
   const copyCssVariables = () => {
     const cssText = `:root {
@@ -95,8 +90,6 @@ export function ThemeProvider({ children }) {
         setGridSize,
         patternType,
         setPatternType,
-        collapsedRail,
-        setCollapsedRail,
         copyCssVariables,
       }}
     >

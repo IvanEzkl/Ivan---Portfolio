@@ -14,22 +14,22 @@ export function useClock(hostTimezone = "Asia/Manila") {
   });
 
   useEffect(() => {
-    let detectedTz = "Local";
-    let detectedOffset = "";
-    try {
-      detectedTz = Intl.DateTimeFormat().resolvedOptions().timeZone || "Local";
-      const offsetMinutes = -new Date().getTimezoneOffset();
-      const sign = offsetMinutes >= 0 ? "+" : "-";
-      const hours = Math.floor(Math.abs(offsetMinutes) / 60);
-      const mins = Math.abs(offsetMinutes) % 60;
-      detectedOffset = `UTC${sign}${hours}${mins > 0 ? `:${mins.toString().padStart(2, "0")}` : ""}`;
-    } catch {
-      detectedTz = "Local";
-    }
-
     const updateTime = () => {
       try {
         const now = new Date();
+
+        let detectedTz = "Local";
+        let detectedOffset = "";
+        try {
+          detectedTz = Intl.DateTimeFormat().resolvedOptions().timeZone || "Local";
+          const offsetMinutes = -now.getTimezoneOffset();
+          const sign = offsetMinutes >= 0 ? "+" : "-";
+          const hours = Math.floor(Math.abs(offsetMinutes) / 60);
+          const mins = Math.abs(offsetMinutes) % 60;
+          detectedOffset = `UTC${sign}${hours}${mins > 0 ? `:${mins.toString().padStart(2, "0")}` : ""}`;
+        } catch {
+          detectedTz = "Local";
+        }
 
         // Host Time (Asia/Manila UTC+8)
         const hostTimeFormatter = new Intl.DateTimeFormat("en-GB", {
