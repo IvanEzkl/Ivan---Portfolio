@@ -63,12 +63,6 @@ export default function ContactCard() {
     <div className="contact-figma-layout">
       {/* ── Top Header Row ─────────────────────────────────── */}
       <div className="contact-top-row">
-        {/* Left: Massive Title */}
-        <h2 className="contact-title font-head">
-          <span className="contact-title-white">LET'S</span>
-          <span className="contact-title-orange">BUILD.</span>
-        </h2>
-
         {/* 3D Global Radar Hologram */}
         <div className="contact-globe-container">
           <ThreeContactGlobe />
@@ -76,7 +70,7 @@ export default function ContactCard() {
 
         {/* Right: Subtitle & Social Links */}
         <div className="contact-top-right">
-          <p className="contact-intro-text font-mono">
+          <p className="contact-intro-text">
             Open to full-stack, AI, and mobile engineering opportunities — roles,
             inquiries, or contract work. Response within 24 hours.
           </p>
@@ -173,7 +167,7 @@ export default function ContactCard() {
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>
-            <h3 className="font-head" style={{ fontSize: "1.4rem", color: "#ffffff" }}>
+            <h3 className="font-head" style={{ fontSize: "1.4rem", color: "var(--text-primary)" }}>
               Message Dispatched
             </h3>
             <p style={{ color: "#a1a1aa", fontSize: "0.88rem", maxWidth: "420px" }}>

@@ -1,18 +1,44 @@
-import React from "react";
+import React, { useRef } from "react";
 import HeroCard from "../components/cards/HeroCard";
 import ExperienceCard from "../components/cards/ExperienceCard";
 import WorkShowcase from "../components/WorkShowcase";
 import StackCard from "../components/cards/StackCard";
 import AboutCard from "../components/cards/AboutCard";
-import ClockCard from "../components/cards/ClockCard";
-import ThemeCard from "../components/cards/ThemeCard";
 import ContactCard from "../components/cards/ContactCard";
+import ChapterHeader from "../components/ChapterHeader";
+import StoryProgress from "../components/StoryProgress";
+import { useReveal } from "../hooks/useReveal";
 import config from "../../portfolio.config";
 
-export default function Home() {
+const CHAPTERS = [
+  { id: "work", num: "01", label: "Selected work", title: "Selected work" },
+  { id: "stack", num: "02", label: "Toolkit", title: "Tech stack" },
+  { id: "experience", num: "03", label: "Journey", title: "Experience" },
+  { id: "about", num: "04", label: "About", title: "About me" },
+  { id: "connect", num: "05", label: "Contact", title: "Let's build" },
+];
+
+const TOTAL = String(CHAPTERS.length).padStart(2, "0");
+
+function Chapter({ id, aside, className = "", children }) {
+  const chapter = CHAPTERS.find((c) => c.id === id);
   return (
-    <main className="portfolio-container">
-      {/* ── 1. Hero Section ────────────────────────────────────────── */}
+    <section id={id} aria-label={chapter.label} className={`portfolio-section chapter ${className}`}>
+      <ChapterHeader num={chapter.num} total={TOTAL} label={chapter.label} title={chapter.title} aside={aside} />
+      {children}
+    </section>
+  );
+}
+
+export default function Home() {
+  const mainRef = useRef(null);
+  useReveal(mainRef);
+
+  return (
+    <main ref={mainRef} className="portfolio-container">
+      <StoryProgress chapters={CHAPTERS} />
+
+      {/* ── 00. Hero ───────────────────────────────────────────────── */}
       <section
         id="overview"
         aria-label="Overview & Intro"
@@ -21,64 +47,27 @@ export default function Home() {
         <HeroCard />
       </section>
 
-      {/* ── 2. Work Section (Full Showcase) ────────────────────────── */}
-      <section
+      {/* ── 01. Work ───────────────────────────────────────────────── */}
+      <Chapter
         id="work"
-        aria-label="Selected Work & Projects"
-        className="portfolio-section"
+        aside={<span className="chapter-meta font-mono">{config.projects.length} projects</span>}
       >
-        <div className="work-header-row">
-          <div>
-            <span className="section-eyebrow">SELECTED PROJECTS</span>
-            <h2 className="section-heading work-heading">
-              SELECTED<br />WORKS
-            </h2>
-          </div>
-          <div className="work-records-count font-mono">
-            <span>{config.projects.length} RECORDS</span>
-          </div>
+        <div className="reveal">
+          <WorkShowcase layout="track" />
         </div>
+      </Chapter>
 
-        <WorkShowcase />
-      </section>
-
-      {/* ── 3. Stack Section ───────────────────────────────────────── */}
-      <section
-        id="stack"
-        aria-label="Stack & Technologies"
-        className="portfolio-section"
-      >
-        <div className="stack-header-row">
-          <div>
-            <span className="section-eyebrow">TOOLKIT</span>
-            <h2 className="section-heading stack-heading">
-              TECH<br />STACK
-            </h2>
-          </div>
-        </div>
-
-        <div className="w-full">
+      {/* ── 02. Stack ──────────────────────────────────────────────── */}
+      <Chapter id="stack">
+        <div className="reveal w-full">
           <StackCard />
         </div>
-      </section>
+      </Chapter>
 
-      {/* ── 4. Experience & Trajectory Section ──────────────────────── */}
-      <section
+      {/* ── 03. Experience ─────────────────────────────────────────── */}
+      <Chapter
         id="experience"
-        aria-label="Trajectory & Journey"
-        className="portfolio-section"
-      >
-        <div className="trajectory-header-row">
-          <div>
-            <span className="section-eyebrow">CAREER</span>
-            <h2 className="section-heading trajectory-heading">
-              EXPERIENCE<br />& JOURNEY
-            </h2>
-            <p className="trajectory-subheading font-mono">
-              My academic foundation, industry experience, and active participation in developer communities.
-            </p>
-          </div>
-
+        aside={
           <a
             href={config.resumeUrl || "/resume.pdf"}
             target="_blank"
@@ -88,58 +77,26 @@ export default function Home() {
             <span>VIEW FULL CV</span>
             <span className="btn-arrow">↗</span>
           </a>
-        </div>
-
-        <ExperienceCard />
-      </section>
-
-      {/* ── 5. About Section ───────────────────────────────────────── */}
-      <section
-        id="about"
-        aria-label="About Me"
-        className="portfolio-section"
+        }
       >
-        <div className="about-header-row">
-          <div>
-            <span className="section-eyebrow">BIOGRAPHY</span>
-            <h2 className="section-heading about-heading">
-              ABOUT<br />ME
-              
-            </h2>
-          </div>
+        <div className="reveal">
+          <ExperienceCard />
         </div>
+      </Chapter>
 
-        <AboutCard />
-      </section>
-
-      {/* ── Marquee Divider Between About & Contact ──────────────── */}
-      <div className="section-marquee-divider font-mono" aria-hidden="true">
-        <div className="section-marquee-track">
-          {[...Array(6)].map((_, i) => (
-            <React.Fragment key={i}>
-              <span className="ticker-dot">✦</span>
-              <span>LET'S WORK TOGETHER</span>
-              <span className="ticker-dot">✦</span>
-              <span>START A PROJECT</span>
-              <span className="ticker-dot">✦</span>
-              <span>GET IN TOUCH</span>
-              <span className="ticker-dot">✦</span>
-              <span className="ticker-accent">● OPEN TO WORK</span>
-            </React.Fragment>
-          ))}
+      {/* ── 04. About ──────────────────────────────────────────────── */}
+      <Chapter id="about">
+        <div className="reveal">
+          <AboutCard />
         </div>
-      </div>
+      </Chapter>
 
-      {/* ── 6. Connect Section ─────────────────────────────────────── */}
-      <section
-        id="connect"
-        aria-label="Get In Touch"
-        className="portfolio-section portfolio-section--last portfolio-section--contact"
-      >
-        <div className="contact-full-wrapper">
+      {/* ── 05. Contact ────────────────────────────────────────────── */}
+      <Chapter id="connect" className="portfolio-section--last portfolio-section--contact">
+        <div className="contact-full-wrapper reveal">
           <ContactCard />
         </div>
-      </section>
+      </Chapter>
     </main>
   );
 }

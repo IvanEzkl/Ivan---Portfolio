@@ -1273,32 +1273,8 @@ svg {
 }
 
 /* ── Selected Works (Image 2 Figma Redesign) ─────────────── */
-.work-header-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  width: 100%;
-  margin-bottom: 28px;
-}
 
-.work-heading {
-  font-family: var(--font-head);
-  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: var(--text-primary);
-  margin-top: 6px;
-}
 
-.work-records-count {
-  font-size: 0.82rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  font-weight: 700;
-}
 
 .work-showcase-container {
   width: 100%;
@@ -2230,21 +2206,7 @@ svg {
 }
 
 /* ── Tech Stack Matrix (Image 3 Figma Redesign) ──────────── */
-.stack-header-row {
-  width: 100%;
-  margin-bottom: 32px;
-}
 
-.stack-heading {
-  font-family: var(--font-head);
-  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: var(--text-primary);
-  margin-top: 6px;
-}
 
 /* ── Stack Bento ── */
 .stack-bento {
@@ -2473,15 +2435,6 @@ svg {
 }
 
 /* ── Trajectory & Journey (Image 4 Figma Redesign) ────────── */
-.trajectory-header-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 20px;
-  flex-wrap: wrap;
-  width: 100%;
-  margin-bottom: 32px;
-}
 
 .btn-trajectory-resume {
   display: inline-flex;
@@ -2509,24 +2462,7 @@ svg {
   box-shadow: 0 4px 16px var(--accent-20);
 }
 
-.trajectory-heading {
-  font-family: var(--font-head);
-  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: var(--text-primary);
-  margin-top: 6px;
-  margin-bottom: 12px;
-}
 
-.trajectory-subheading {
-  font-size: 0.95rem;
-  line-height: 1.65;
-  color: var(--text-muted);
-  max-width: 640px;
-}
 
 .trajectory-grid {
   display: grid;
@@ -2656,21 +2592,7 @@ svg {
 }
 
 /* ── About Section (Image 5 Figma Redesign) ───────────────── */
-.about-header-row {
-  width: 100%;
-  margin-bottom: 32px;
-}
 
-.about-heading {
-  font-family: var(--font-head);
-  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: var(--text-primary);
-  margin-top: 6px;
-}
 
 .about-figma-container {
   width: 100%;
@@ -2887,43 +2809,9 @@ svg {
 }
 
 /* ── Section Marquee Divider (Between About & Contact) ───── */
-.section-marquee-divider {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  overflow: hidden;
-  border-top: 1px solid var(--accent);
-  border-bottom: 1px solid var(--accent);
-  padding: 18px 0;
-  background: #08080a;
-  position: relative;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  margin-top: 20px;
-}
 
-.section-marquee-track {
-  display: flex;
-  gap: 28px;
-  white-space: nowrap;
-  width: max-content;
-  animation: marquee 24s linear infinite;
-  font-size: 0.9rem;
-  letter-spacing: 0.12em;
-  color: #ededed;
-  font-weight: 800;
-  text-transform: uppercase;
-}
 
-.ticker-accent {
-  color: var(--accent);
-  font-weight: 900;
-}
 
-.ticker-dot {
-  color: var(--accent);
-  font-size: 0.8rem;
-}
 
 @media (max-width: 1100px) {
   .about-three-grid {
@@ -3163,192 +3051,6 @@ svg {
   text-transform: uppercase;
   flex-wrap: wrap;
   gap: 16px;
-}
-
-/* ── Inverted Mode: When Site is Dark -> Contact is Light ── */
-:root,
-[data-theme="dark"] {
-  .portfolio-section--contact {
-    background: #ffffff;
-    color: #090d16;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    padding-left: calc(50vw - 50% + 28px);
-    padding-right: calc(50vw - 50% + 28px);
-    padding-top: 80px;
-    padding-bottom: 48px;
-    margin-bottom: 0;
-    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.4);
-  }
-
-  .portfolio-section--contact .contact-title-white {
-    color: #090d16;
-    display: block;
-  }
-
-  .portfolio-section--contact .contact-title-orange {
-    color: var(--accent);
-    display: block;
-    text-shadow: var(--accent-glow);
-  }
-
-  .portfolio-section--contact .contact-intro-text {
-    color: #475569;
-  }
-
-  .portfolio-section--contact .contact-social-item {
-    color: #090d16;
-  }
-
-  .portfolio-section--contact .social-name {
-    color: #090d16;
-  }
-
-  .portfolio-section--contact .contact-details-matrix {
-    border-top: 1px solid #e2e8f0;
-    border-bottom: 1px solid #e2e8f0;
-  }
-
-  .portfolio-section--contact .contact-detail-label {
-    color: #64748b;
-  }
-
-  .portfolio-section--contact .contact-detail-value {
-    color: #0f172a;
-  }
-
-  .portfolio-section--contact .contact-form-wrapper {
-    border-top: 1px solid #e2e8f0;
-    border-bottom: 1px solid #e2e8f0;
-  }
-
-  .portfolio-section--contact .contact-table-row {
-    border-bottom: 1px solid #e2e8f0;
-  }
-
-  .portfolio-section--contact .contact-table-label {
-    color: #64748b;
-  }
-
-  .portfolio-section--contact .contact-table-input {
-    color: #090d16;
-  }
-
-  .portfolio-section--contact .contact-table-input::placeholder {
-    color: #94a3b8;
-  }
-
-  .portfolio-section--contact .contact-required-note {
-    color: #64748b;
-  }
-
-  .portfolio-section--contact .contact-submit-btn {
-    background: #090d16;
-    color: #ffffff;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  }
-
-  .portfolio-section--contact .contact-submit-btn:hover {
-    background: #1e293b;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
-  }
-
-  .portfolio-section--contact .contact-footer {
-    border-top: 1px solid #e2e8f0;
-    color: #64748b;
-  }
-}
-
-/* ── Inverted Mode: When Site is Light -> Contact is Dark ── */
-[data-theme="light"] {
-  .portfolio-section--contact {
-    background: #08080a;
-    color: #f4f4f6;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    padding-left: calc(50vw - 50% + 28px);
-    padding-right: calc(50vw - 50% + 28px);
-    padding-top: 80px;
-    padding-bottom: 48px;
-    margin-bottom: 0;
-    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.15);
-  }
-
-  .portfolio-section--contact .contact-title-white {
-    color: #ffffff;
-    display: block;
-  }
-
-  .portfolio-section--contact .contact-title-orange {
-    color: var(--accent);
-    display: block;
-    text-shadow: var(--accent-glow);
-  }
-
-  .portfolio-section--contact .contact-intro-text {
-    color: #8e8e96;
-  }
-
-  .portfolio-section--contact .contact-social-item {
-    color: #ffffff;
-  }
-
-  .portfolio-section--contact .social-name {
-    color: #ffffff;
-  }
-
-  .portfolio-section--contact .contact-details-matrix {
-    border-top: 1px solid #222226;
-    border-bottom: 1px solid #222226;
-  }
-
-  .portfolio-section--contact .contact-detail-label {
-    color: #71717a;
-  }
-
-  .portfolio-section--contact .contact-detail-value {
-    color: #ededed;
-  }
-
-  .portfolio-section--contact .contact-form-wrapper {
-    border-top: 1px solid #222226;
-    border-bottom: 1px solid #222226;
-  }
-
-  .portfolio-section--contact .contact-table-row {
-    border-bottom: 1px solid #222226;
-  }
-
-  .portfolio-section--contact .contact-table-label {
-    color: #71717a;
-  }
-
-  .portfolio-section--contact .contact-table-input {
-    color: #ffffff;
-  }
-
-  .portfolio-section--contact .contact-table-input::placeholder {
-    color: #52525b;
-  }
-
-  .portfolio-section--contact .contact-required-note {
-    color: #71717a;
-  }
-
-  .portfolio-section--contact .contact-submit-btn {
-    background: #ffffff;
-    color: #000000;
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.25);
-  }
-
-  .portfolio-section--contact .contact-submit-btn:hover {
-    background: #f4f4f5;
-  }
-
-  .portfolio-section--contact .contact-footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    color: #71717a;
-  }
 }
 
 @media (max-width: 860px) {
@@ -3729,14 +3431,6 @@ svg {
   display: block;
 }
 
-.section-heading {
-  font-family: var(--font-head);
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 700;
-  letter-spacing: -0.035em;
-  color: var(--text);
-  line-height: 1.15;
-}
 
 /* ── About Page Dedicated Layout ─────────────────────────── */
 .about-grid {
