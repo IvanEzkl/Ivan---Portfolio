@@ -20,11 +20,16 @@ const CHAPTERS = [
 
 const TOTAL = String(CHAPTERS.length).padStart(2, "0");
 
+function ChapterHeaderFor({ id, aside }) {
+  const chapter = CHAPTERS.find((c) => c.id === id);
+  return <ChapterHeader num={chapter.num} total={TOTAL} label={chapter.label} title={chapter.title} aside={aside} />;
+}
+
 function Chapter({ id, aside, className = "", children }) {
   const chapter = CHAPTERS.find((c) => c.id === id);
   return (
     <section id={id} aria-label={chapter.label} className={`portfolio-section chapter ${className}`}>
-      <ChapterHeader num={chapter.num} total={TOTAL} label={chapter.label} title={chapter.title} aside={aside} />
+      <ChapterHeaderFor id={id} aside={aside} />
       {children}
     </section>
   );
@@ -92,11 +97,13 @@ export default function Home() {
       </Chapter>
 
       {/* ── 05. Contact ────────────────────────────────────────────── */}
-      <Chapter id="connect" className="portfolio-section--last portfolio-section--contact">
-        <div className="contact-full-wrapper reveal">
-          <ContactCard />
-        </div>
-      </Chapter>
+      <section
+        id="connect"
+        aria-label="Contact"
+        className="portfolio-section chapter portfolio-section--last portfolio-section--contact"
+      >
+        <ContactCard header={<ChapterHeaderFor id="connect" />} />
+      </section>
     </main>
   );
 }
