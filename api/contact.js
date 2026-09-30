@@ -1,5 +1,6 @@
 // POST /api/contact — sends the portfolio contact form through Gmail.
 // Env: GMAIL_USER, GMAIL_APP_PASSWORD, optional CONTACT_TO (defaults to GMAIL_USER).
+import { createHash } from "node:crypto";
 import nodemailer from "nodemailer";
 import { notificationEmail, autoReplyEmail } from "./_lib/emailTemplates.js";
 
@@ -22,6 +23,14 @@ const cleanEnv = (value) => String(value || "").trim().replace(/^(["'])(.*)\1$/,
 
 // Error code plus Gmail's SMTP reply code (e.g. EAUTH 535), never the credentials
 const describeError = (err) => [err.code, err.responseCode].filter(Boolean).join(" ") || err.message;
+
+// Safe comparison aid for login failures: masked address, lengths and a short hash of the
+// password; `node scripts/env-fingerprint.mjs` prints the same line from the local .env
+export function credentialFingerprint(user, password) {
+  const [local = "", domain = ""] = user.split("@");
+  const hash = createHash("sha256").update(password).digest("hex").slice(0, 8);
+  return `user ${local.slice(0, 1)}***@${domain} (${user.length} chars), password ${password.length} chars, sha256 ${hash}`;
+}
 
 function send(res, status, body) {
   res.statusCode = status;
@@ -109,6 +118,9 @@ export default async function handler(req, res) {
     });
   } catch (err) {
     console.error("Contact form: notification failed:", describeError(err));
+    if (err.code === "EAUTH") {
+      console.error("Contact form: Gmail rejected", credentialFingerprint(GMAIL_USER, GMAIL_APP_PASSWORD));
+    }
     return send(res, 502, { ok: false, error: "Your message couldn't be sent right now. Please try again or email me directly." });
   }
 
