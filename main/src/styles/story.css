@@ -864,8 +864,7 @@ html.js-reveal .reveal.is-in {
 }
 
 /* ── 05 · Contact: full-bleed split (dark info · paper form) ──
-   Both panels are opaque and keep their own palette in either theme,
-   so what a visitor types never sits on the moving background. */
+   Opaque panels with fixed palettes, so typing never sits on the moving background. */
 .portfolio-section--contact.chapter {
   padding-top: clamp(96px, 14vh, 160px);
 }
@@ -947,11 +946,6 @@ html.js-reveal .reveal.is-in {
 
 .contact-split-info .contact-globe-container {
   flex-shrink: 0;
-}
-
-.contact-split-info .three-contact-globe-canvas {
-  width: 150px;
-  height: 150px;
 }
 
 .contact-split-info .globe-status-pill {
@@ -1119,7 +1113,34 @@ html.js-reveal .reveal.is-in {
 
   .contact-split-info .contact-top-row {
     flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  /* The globe renders a fixed 180px canvas, so scale the whole block */
+  .contact-split-info .contact-globe-container {
+    align-self: center;
+    transform: scale(0.75);
+    margin-block: -22px;
+  }
+
+  .contact-split-form .contact-form-bottom {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact-split-form .contact-submit-btn {
+    width: 100%;
+    justify-content: center;
+    padding-block: 17px;
+  }
+
+  .contact-footer {
+    flex-direction: column;
     align-items: flex-start;
+    gap: 10px;
+    padding: 22px 16px calc(env(safe-area-inset-bottom, 0px) + 22px);
+    margin-top: 0;
   }
 }
 
@@ -1130,4 +1151,218 @@ html.js-reveal .reveal.is-in {
 
 .stack-tile--learning .stack-tools {
   grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+}
+
+/* ── Phone menu ── */
+.site-header__menu-btn {
+  display: none;
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: calc(env(safe-area-inset-top, 0px) + 18px) 16px calc(env(safe-area-inset-bottom, 0px) + 24px);
+  background: var(--bg);
+  overflow-y: auto;
+  animation: menu-in 0.35s var(--story-ease);
+}
+
+@keyframes menu-in {
+  from { opacity: 0; transform: translateY(-12px); }
+}
+
+.mobile-menu__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+}
+
+.mobile-menu__close {
+  padding: 10px 14px;
+  font: inherit;
+  letter-spacing: inherit;
+  color: var(--text-primary);
+  background: var(--card-surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.mobile-menu > nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mobile-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu__link {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.mobile-menu__num {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  min-width: 2ch;
+}
+
+.mobile-menu__label {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 12vw, 3.4rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.mobile-menu__link.is-active .mobile-menu__num {
+  color: var(--accent);
+}
+
+.mobile-menu__link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.mobile-menu__foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.mobile-menu__foot a {
+  color: var(--text-primary);
+  text-decoration: none;
+  padding-block: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+  .site-header__menu-btn {
+    display: inline-flex;
+  }
+
+  .site-header__nav {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header__contact-btn {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu {
+    animation: none;
+  }
+}
+
+/* ── Phone polish ── */
+.hint-touch {
+  display: none;
+}
+
+@media (hover: none) {
+  .hint-pointer {
+    display: none;
+  }
+
+  .hint-touch {
+    display: inline;
+  }
+}
+
+/* The portfolio mockup's terminal commands may truncate instead of overflowing */
+.terminal-line .t-cmd {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  /* The footer is the last thing on the page */
+  .portfolio-container {
+    padding-bottom: 0;
+  }
+
+  /* Hero: keep the label on one line beside a smaller 3D core */
+  .hero-top-row .hero-3d-core-anchor {
+    transform: scale(0.7);
+    transform-origin: right center;
+    margin: -14px -8px -14px 0;
+  }
+
+  /* Project mockups: let them grow to their content and scale down slightly */
+  .bento-media {
+    padding: 14px;
+  }
+
+  .bento-window {
+    zoom: 0.82;
+  }
+
+  .bento-media .project-preview-mockup-wrapper {
+    height: auto;
+    min-height: 155px;
+  }
+
+  .bento-tile:hover .bento-window,
+  .bento-tile.is-active .bento-window {
+    transform: none;
+  }
+
+  /* Stack: the Frontend tile uses the same compact rows as the others */
+  .stack-tile--hero .stack-tools {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    grid-auto-rows: auto;
+    gap: 8px;
+  }
+
+  .stack-tile--hero .stack-tool {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .stack-tile--hero .stack-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .stack-tile--hero .stack-tool-name {
+    font-size: 0.76rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-tag-name {
+    display: none;
+  }
 }

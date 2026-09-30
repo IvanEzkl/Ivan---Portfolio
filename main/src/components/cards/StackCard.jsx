@@ -70,10 +70,12 @@ export default function StackCard() {
                   key={tech}
                   type="button"
                   className={`stack-tool ${active === tech ? "is-active" : ""}`}
-                  onMouseEnter={() => setActive(tech)}
-                  onMouseLeave={() => setActive(null)}
+                  onPointerEnter={(e) => e.pointerType === "mouse" && setActive(tech)}
+                  onPointerLeave={(e) => e.pointerType === "mouse" && setActive(null)}
+                  onClick={() => setActive(tech)}
                   onFocus={() => setActive(tech)}
                   onBlur={() => setActive(null)}
+                  aria-pressed={active === tech}
                 >
                   <ToolIcon name={tech} />
                   <span className="stack-tool-name font-mono">{tech}</span>
@@ -94,7 +96,10 @@ export default function StackCard() {
                   <span className="stack-foot-label">NOT IN FEATURED PROJECTS YET</span>
                 )
               ) : (
-                <span className="stack-foot-hint">HOVER A TOOL TO SEE WHERE I USED IT</span>
+                <span className="stack-foot-hint">
+                  <span className="hint-pointer">HOVER</span>
+                  <span className="hint-touch">TAP</span> A TOOL TO SEE WHERE I USED IT
+                </span>
               )}
             </div>
           </div>

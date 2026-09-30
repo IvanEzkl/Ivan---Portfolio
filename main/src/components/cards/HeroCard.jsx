@@ -23,7 +23,8 @@ export default function HeroCard() {
         {/* Label row */}
         <div className="hero-top-row">
           <span className="hero-portfolio-tag font-mono">
-            IVAN EZEKIEL — PORTFOLIO {config.bio.subtitle.replace(/\D/g, "")}
+            <span className="hero-tag-name">IVAN EZEKIEL — </span>
+            PORTFOLIO {config.bio.subtitle.replace(/\D/g, "")}
           </span>
           <div className="hero-3d-core-anchor">
             <ThreeHeroCore />
