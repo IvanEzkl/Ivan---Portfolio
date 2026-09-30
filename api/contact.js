@@ -18,6 +18,11 @@ function rateLimited(ip) {
   return recent.length > RATE_LIMIT.max;
 }
 
+const cleanEnv = (value) => String(value || "").trim().replace(/^(["'])(.*)\1$/, "$2").trim();
+
+// Error code plus Gmail's SMTP reply code (e.g. EAUTH 535), never the credentials
+const describeError = (err) => [err.code, err.responseCode].filter(Boolean).join(" ") || err.message;
+
 function send(res, status, body) {
   res.statusCode = status;
   res.setHeader("Content-Type", "application/json");
@@ -75,7 +80,11 @@ export default async function handler(req, res) {
     return send(res, 429, { ok: false, error: "Too many messages in a short time. Please try again in a few minutes." });
   }
 
-  const { GMAIL_USER, GMAIL_APP_PASSWORD, CONTACT_TO } = process.env;
+  // Forgive common dashboard paste mistakes: surrounding quotes, stray whitespace,
+  // and the spaces Google shows inside App Passwords ("abcd efgh ijkl mnop")
+  const GMAIL_USER = cleanEnv(process.env.GMAIL_USER);
+  const GMAIL_APP_PASSWORD = cleanEnv(process.env.GMAIL_APP_PASSWORD).replace(/\s+/g, "");
+  const CONTACT_TO = cleanEnv(process.env.CONTACT_TO);
   if (!GMAIL_USER || !GMAIL_APP_PASSWORD) {
     console.error("Contact form: GMAIL_USER / GMAIL_APP_PASSWORD are not set");
     return send(res, 500, { ok: false, error: "The contact form isn't set up yet. Please email me directly." });
@@ -99,7 +108,7 @@ export default async function handler(req, res) {
       text: notice.text,
     });
   } catch (err) {
-    console.error("Contact form: notification failed:", err.code || err.message);
+    console.error("Contact form: notification failed:", describeError(err));
     return send(res, 502, { ok: false, error: "Your message couldn't be sent right now. Please try again or email me directly." });
   }
 
@@ -114,7 +123,7 @@ export default async function handler(req, res) {
       text: reply.text,
     });
   } catch (err) {
-    console.error("Contact form: auto-reply failed:", err.code || err.message);
+    console.error("Contact form: auto-reply failed:", describeError(err));
   }
 
   return send(res, 200, { ok: true });
