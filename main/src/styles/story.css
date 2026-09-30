@@ -1366,3 +1366,23 @@ html.js-reveal .reveal.is-in {
     display: none;
   }
 }
+
+/* ── Contact form: spam trap + error message ── */
+.contact-trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact-split-form .contact-err-msg {
+  margin: 0;
+  padding: 12px 14px;
+  border-left: 3px solid #b91c1c;
+  background: #fbeaea;
+  color: #7f1d1d;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}

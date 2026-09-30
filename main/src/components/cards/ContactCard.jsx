@@ -10,6 +10,9 @@ export default function ContactCard({ header }) {
   });
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
   const [errorMsg, setErrorMsg] = useState("");
+  // Spam traps checked by /api/contact: a field humans never see, and when the form was opened
+  const [trap, setTrap] = useState("");
+  const [startedAt, setStartedAt] = useState(() => Date.now());
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,36 +29,24 @@ export default function ContactCard({ header }) {
     setErrorMsg("");
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/regodonivanezekiel@gmail.com", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          _replyto: formData.email,
-          subject: `Portfolio Inquiry from ${formData.name.trim()}`,
-          message: formData.message,
-          _captcha: "false",
-          _template: "table",
-        }),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ ...formData, company: trap, startedAt }),
       });
+      const result = await response.json().catch(() => ({}));
 
-      const result = await response.json();
-
-      if (response.ok && (result.success === "true" || result.success === true || response.status === 200)) {
+      if (response.ok && result.ok) {
         setStatus("success");
         setFormData({ name: "", email: "", message: "" });
       } else {
-        setStatus("success");
-        setFormData({ name: "", email: "", message: "" });
+        setStatus("error");
+        setErrorMsg(result.error || "Your message couldn't be sent right now. Please try again or email me directly.");
       }
     } catch (err) {
       console.error("Submission error:", err);
       setStatus("error");
-      setErrorMsg("Unable to send right now. Please check your internet connection.");
+      setErrorMsg("Unable to send right now. Please check your internet connection and try again.");
     }
   };
 
@@ -175,14 +166,18 @@ export default function ContactCard({ header }) {
                   </svg>
                 </div>
                 <h3 className="font-head" style={{ fontSize: "1.4rem" }}>
-                  Message Dispatched
+                  Message sent
                 </h3>
                 <p style={{ fontSize: "0.88rem", maxWidth: "420px" }}>
-                  Thank you! Your note has been delivered to <strong>{config.contact.email}</strong>. Response within 24 hours.
+                  Thank you for reaching out. A confirmation is on its way to your inbox, and I'll get back to you
+                  within 24 hours.
                 </p>
                 <button
                   type="button"
-                  onClick={() => setStatus("idle")}
+                  onClick={() => {
+                    setStatus("idle");
+                    setStartedAt(Date.now());
+                  }}
                   className="contact-submit-btn font-mono"
                   style={{ marginTop: "14px", width: "auto", padding: "10px 24px" }}
                 >
@@ -242,8 +237,22 @@ export default function ContactCard({ header }) {
                   />
                 </div>
 
+                {/* Honeypot: hidden from people and screen readers, bots tend to fill it */}
+                <div className="contact-trap" aria-hidden="true">
+                  <label htmlFor="contact-company">Company</label>
+                  <input
+                    id="contact-company"
+                    type="text"
+                    name="company"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={trap}
+                    onChange={(e) => setTrap(e.target.value)}
+                  />
+                </div>
+
                 {errorMsg && (
-                  <p className="contact-err-msg font-mono">{errorMsg}</p>
+                  <p className="contact-err-msg" role="alert">{errorMsg}</p>
                 )}
 
                 {/* Form Footer Action */}
