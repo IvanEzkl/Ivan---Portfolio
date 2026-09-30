@@ -35,7 +35,7 @@ export default function Home() {
             </h2>
           </div>
           <div className="work-records-count font-mono">
-            <span>4 RECORDS</span>
+            <span>{config.projects.length} RECORDS</span>
           </div>
         </div>
 

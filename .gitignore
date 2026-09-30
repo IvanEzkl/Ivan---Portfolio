@@ -1,30 +1,5 @@
-# Dependencies
-node_modules/
-.pnp
-.pnp.js
-
-# Production & Build outputs
-dist/
-dist-ssr/
-build/
-*.tsbuildinfo
-
-# Environment variables & secrets
-.env
-.env.*
-!.env.example
-*.env
-*.env.local
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Vercel & Deployment
-.vercel
-
-# Logs & Debug
-logs/
+# Logs
+logs
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -32,28 +7,18 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Vite cache & Test coverage
-.vite/
-coverage/
-*.lcov
+node_modules
+dist
+dist-ssr
+*.local
 
-# Editor & IDE directories
+# Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea/
+.idea
+.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-*.swo
-
-# OS files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-Desktop.ini

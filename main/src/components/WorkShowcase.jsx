@@ -1,70 +1,110 @@
 import React, { useState } from "react";
 import config from "../../portfolio.config";
 import ProjectPreviewMockup from "./ProjectPreviewMockup";
+import { usePageTransition } from "../hooks/usePageTransition";
 
-export default function WorkShowcase() {
-  const [hoveredId, setHoveredId] = useState(null);
+function topTag(projects) {
+  const counts = {};
+  projects.flatMap((p) => p.tags).forEach((t) => (counts[t] = (counts[t] || 0) + 1));
+  return Object.keys(counts).sort((a, b) => counts[b] - counts[a])[0];
+}
+
+export default function WorkShowcase({ projects = config.projects, showStats = true }) {
+  const [activeId, setActiveId] = useState(null);
+  const { transitionTo } = usePageTransition();
+
+  const inProgress = projects.filter((p) => p.status === "IN PROGRESS").length;
 
   return (
     <div className="work-showcase-container">
-      {/* 2x2 Grid for the 4 Selected Works */}
-      <div className="work-grid-figma">
-        {config.projects.map((project) => {
-          const isHovered = hoveredId === project.id;
+      <div className={`bento-grid ${showStats ? "" : "bento-grid--no-stats"}`}>
+        {projects.map((project) => {
+          const isActive = activeId === project.id;
+          const href = project.github || (project.url && `https://${project.url}`);
+          const Tile = href ? "a" : "article";
+          const linkProps = href
+            ? { href, target: "_blank", rel: "noreferrer" }
+            : { tabIndex: 0, "aria-label": `${project.title}, private client project` };
 
           return (
-            <a
+            <Tile
               key={project.id}
-              href={project.github || `https://${project.url}`}
-              target="_blank"
-              rel="noreferrer"
-              className={`work-card-figma ${isHovered ? "hovered" : ""}`}
-              onMouseEnter={() => setHoveredId(project.id)}
-              onMouseLeave={() => setHoveredId(null)}
+              {...linkProps}
+              className={`bento-tile bento-tile--${project.size || "default"} ${isActive ? "is-active" : ""}`}
+              onMouseEnter={() => setActiveId(project.id)}
+              onMouseLeave={() => setActiveId(null)}
+              onFocus={() => setActiveId(project.id)}
+              onBlur={() => setActiveId(null)}
             >
-              {/* 1. Header Row */}
-              <div className="work-card-header">
-                <div className="work-card-title-group font-mono">
-                  <span className="work-card-num">{project.num}</span>
-                  <span className="work-card-name">{project.title}</span>
-                </div>
+              {/* 1. Top Meta Row */}
+              <div className="bento-top font-mono">
+                <span className="bento-num">{project.num}</span>
+                <span className="bento-year">{project.year}</span>
+                {href ? (
+                  <span className="bento-arrow" aria-hidden="true">↗</span>
+                ) : (
+                  <span className="bento-private">PRIVATE · CLIENT WORK</span>
+                )}
+              </div>
 
-                <div className="work-card-meta font-mono">
-                  <span className="work-card-arrow">↗</span>
-                  <span className="work-card-year">{project.year}</span>
+              {/* 2. Visual-First Product Mockup */}
+              <div className="bento-media" aria-hidden="true">
+                <div className="bento-window">
+                  <ProjectPreviewMockup projectId={project.id} isHovered={isActive} />
                 </div>
               </div>
 
-              {/* 2. Middle Interactive Product UI Mockup Window */}
-              <div className="work-card-blueprint-wrap">
-                <ProjectPreviewMockup
-                  projectId={project.id}
-                  isHovered={isHovered}
-                />
-              </div>
-
-              {/* 3. Description */}
-              <p className="work-card-desc font-mono">
-                {project.description}
-              </p>
-
-              {/* 4. Bottom Footer: Tags & Status */}
-              <div className="work-card-footer">
-                <div className="work-card-tags">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="work-card-tag font-mono">
-                      {tag}
-                    </span>
-                  ))}
+              {/* 3. Info Panel: Always-On Header + Revealed Story */}
+              <div className="bento-info">
+                <div className="bento-title-row">
+                  <h3 className="bento-title font-head">{project.title}</h3>
+                  <span className="bento-status font-mono">{project.status}</span>
                 </div>
+                <span className="bento-role font-mono">{project.role}</span>
 
-                <span className="work-card-status font-mono">
-                  {project.status}
-                </span>
+                <div className="bento-reveal">
+                  <div className="bento-reveal-inner">
+                    <p className="bento-problem">{project.problem}</p>
+                    <div className="bento-highlights">
+                      {project.highlights.map((h) => (
+                        <span key={h} className="bento-chip font-mono">{h}</span>
+                      ))}
+                    </div>
+                    <div className="bento-tags font-mono">{project.tags.join(" · ")}</div>
+                  </div>
+                </div>
               </div>
-            </a>
+            </Tile>
           );
         })}
+
+        {/* Stats Tile */}
+        {showStats && (
+          <button
+            type="button"
+            className="bento-tile bento-tile--stats"
+            onClick={(e) => transitionTo("/projects", e)}
+          >
+            <span className="bento-stats-eyebrow font-mono">BY THE NUMBERS</span>
+            <div className="bento-stats-list">
+              <div className="bento-stat">
+                <span className="bento-stat-value font-head">{String(projects.length).padStart(2, "0")}</span>
+                <span className="bento-stat-label font-mono">SELECTED BUILDS</span>
+              </div>
+              <div className="bento-stat">
+                <span className="bento-stat-value font-head">{String(inProgress).padStart(2, "0")}</span>
+                <span className="bento-stat-label font-mono">IN PROGRESS</span>
+              </div>
+              <div className="bento-stat">
+                <span className="bento-stat-value font-head">{topTag(projects)}</span>
+                <span className="bento-stat-label font-mono">MOST USED</span>
+              </div>
+            </div>
+            <span className="bento-stats-cta font-mono">
+              VIEW ALL PROJECTS <span aria-hidden="true">→</span>
+            </span>
+          </button>
+        )}
       </div>
     </div>
   );

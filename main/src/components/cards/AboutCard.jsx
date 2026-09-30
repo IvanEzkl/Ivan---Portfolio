@@ -3,7 +3,7 @@ import { useClock } from "../../hooks/useClock";
 import config from "../../../portfolio.config";
 
 export default function AboutCard() {
-  const { hostTimeStr, visitorTimeStr, visitorOffset } = useClock(config.timezone);
+  const { hostTimeStr, visitorTimeStr } = useClock(config.timezone);
 
   const quickFacts = [
     { label: "ROLE", value: "Dev Intern • 3AM" },
@@ -31,18 +31,22 @@ export default function AboutCard() {
           </div>
 
           <div className="about-photo-caption">
-            <h3 className="about-caption-name font-head">{config.name}</h3>
-            <span className="about-caption-role font-mono">
-              Full-Stack Developer & UI Engineer
-            </span>
+            <h3 className="about-caption-name font-head">IVAN EZEKIEL</h3>
+            <span className="about-caption-role font-mono">Developer • Designer</span>
           </div>
         </div>
 
-        {/* ── 2. Middle Card: Narrative Bio ───────────────────── */}
-        <div className="about-card about-card--bio">
-          <span className="about-bio-header font-mono">ABOUT ME</span>
+        {/* ── 2. Middle Card: Narrative Story ─────────────────── */}
+        <div className="about-card about-card--narrative">
+          <div className="about-tag-pill font-mono">
+            <span>A BIT ABOUT ME</span>
+          </div>
 
-          <div className="about-bio-text font-mono">
+          <h3 className="about-narrative-title font-head">
+            The person behind the code.
+          </h3>
+
+          <div className="about-narrative-text font-mono">
             <p>
               I'm a BS IT student at{" "}
               <strong>National University Manila (2023–2027)</strong>, and
@@ -93,9 +97,7 @@ export default function AboutCard() {
 
           {/* Visitor Local Time Clock */}
           <div className="about-clock-block font-mono">
-            <span className="about-clock-label">
-              YOUR LOCAL TIME {visitorOffset ? `(${visitorOffset})` : ""}
-            </span>
+            <span className="about-clock-label">YOUR LOCAL TIME</span>
             <div className="about-clock-digits font-head">{visitorTimeStr}</div>
           </div>
         </div>

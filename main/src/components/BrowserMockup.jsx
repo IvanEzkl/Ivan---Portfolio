@@ -295,31 +295,51 @@ export default function BrowserMockup({ url, type, title }) {
           </div>
         )}
 
-        {type === "cookithow" && (
+        {type === "court-reservation" && (
           <div
             style={{
-              padding: "16px",
+              padding: "14px 16px",
               height: "100%",
               display: "flex",
               flexDirection: "column",
               gap: "8px",
-              background: "linear-gradient(135deg, #1c1917 0%, #292524 100%)",
-              color: "#fafaf9",
+              background: "linear-gradient(135deg, #0b1410 0%, #111c17 100%)",
+              color: "#ecfdf5",
             }}
           >
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <span style={{ fontWeight: 800, fontSize: "0.85rem", color: "#f97316" }}>🍳 CookItHow</span>
-              <span style={{ fontSize: "0.55rem", background: "rgba(249,115,22,0.2)", color: "#fb923c", padding: "1px 5px", borderRadius: "4px" }}>Recipe Hub</span>
+              <span style={{ fontWeight: 800, fontSize: "0.82rem" }}>Court Schedule</span>
+              <span style={{ fontSize: "0.55rem", background: "rgba(239,68,68,0.18)", color: "#fca5a5", padding: "1px 6px", borderRadius: "4px" }}>● Recording armed</span>
             </div>
-            <div style={{ flex: 1, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "6px", padding: "10px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <div>
-                <div style={{ fontWeight: 700, fontSize: "0.82rem" }}>Interactive Cooking Guide</div>
-                <div style={{ fontSize: "0.6rem", color: "#a8a29e", marginTop: "2px" }}>Step-by-step visual timers & ingredient scaling</div>
-              </div>
-              <div style={{ display: "flex", gap: "4px" }}>
-                <span style={{ fontSize: "0.52rem", background: "#f97316", color: "white", padding: "2px 6px", borderRadius: "3px" }}>Prep: 15m</span>
-                <span style={{ fontSize: "0.52rem", background: "rgba(255,255,255,0.1)", padding: "2px 6px", borderRadius: "3px" }}>Cook: 25m</span>
-              </div>
+            <div style={{ flex: 1, display: "grid", gridTemplateColumns: "34px repeat(4, 1fr)", gridAutoRows: "1fr", gap: "4px", fontSize: "0.55rem", color: "#6ee7b7" }}>
+              <span />
+              {["Court A", "Court B", "Court C", "Court D"].map((c) => (
+                <span key={c} style={{ textAlign: "center", color: "#a7f3d0" }}>{c}</span>
+              ))}
+              {[
+                ["6PM", 1, 0, 1, 0],
+                ["7PM", 1, 1, 0, 1],
+                ["8PM", 2, 3, 1, 2],
+                ["9PM", 0, 1, 1, 0],
+              ].map(([time, ...cells]) => (
+                <React.Fragment key={time}>
+                  <span style={{ color: "#94a3b8" }}>{time}</span>
+                  {cells.map((s, i) => (
+                    <span
+                      key={i}
+                      style={{
+                        borderRadius: "3px",
+                        border: s === 0 ? "1px dashed rgba(167,243,208,0.3)" : "1px solid rgba(167,243,208,0.15)",
+                        background: [null, "rgba(148,163,184,0.25)", "rgba(52,211,153,0.2)", "#34d399"][s] || "transparent",
+                      }}
+                    />
+                  ))}
+                </React.Fragment>
+              ))}
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", background: "rgba(52,211,153,0.12)", border: "1px solid rgba(52,211,153,0.3)", borderRadius: "6px", padding: "5px 8px" }}>
+              <span style={{ fontSize: "0.58rem", color: "#a7f3d0" }}>Court B · 8:00 PM · Peak rate</span>
+              <span style={{ fontSize: "0.62rem", color: "#34d399", fontWeight: 800 }}>₱650 · Book →</span>
             </div>
           </div>
         )}

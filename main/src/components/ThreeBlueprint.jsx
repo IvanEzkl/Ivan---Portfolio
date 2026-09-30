@@ -88,18 +88,24 @@ export default function ThreeBlueprint({ projectId, isHovered, archLabel }) {
           extraNodes.push({ mesh: smallMesh, offset: x * y });
         }
       }
-    } else if (projectId === "cookithow") {
-      // 3D Torus Ring Structure & Orbital Particle Nodes
-      const torusGeo = new THREE.TorusGeometry(1.4, 0.25, 12, 32);
-      mainMesh = new THREE.Mesh(torusGeo, mainMaterial);
+    } else if (projectId === "court-reservation") {
+      // 3D Court Floor Plan with Net & Camera Nodes
+      const courtGeo = new THREE.BoxGeometry(2.8, 0.08, 1.6, 4, 1, 2);
+      mainMesh = new THREE.Mesh(courtGeo, mainMaterial);
       group.add(mainMesh);
 
-      const innerSphere = new THREE.Mesh(
-        new THREE.OctahedronGeometry(0.7, 0),
-        mainMaterial
-      );
-      group.add(innerSphere);
-      extraNodes.push({ mesh: innerSphere, isInner: true });
+      const netMesh = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.5, 1.6, 1, 2, 4), mainMaterial);
+      netMesh.position.y = 0.25;
+      group.add(netMesh);
+
+      // Corner-mounted cameras orbiting the court
+      for (let i = 0; i < 4; i++) {
+        const cam = new THREE.Mesh(new THREE.SphereGeometry(0.08, 8, 8), nodeMaterial);
+        const angle = (Math.PI / 2) * i + Math.PI / 4;
+        cam.position.set(Math.cos(angle) * 2, 0.9, Math.sin(angle) * 2);
+        group.add(cam);
+        extraNodes.push({ mesh: cam, radius: 2, speed: 0.01, angle });
+      }
     } else {
       // Portfolio V3: Nested Brutalist Cubes
       const outerCube = new THREE.BoxGeometry(1.8, 1.8, 1.8);

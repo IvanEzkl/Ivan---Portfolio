@@ -1,6 +1,14 @@
 import React from "react";
 import { useTheme } from "../context/ThemeContext";
 
+const COURTS = ["A", "B", "C", "D"];
+const COURT_SLOTS = [
+  { time: "6PM", cells: ["booked", "open", "booked", "open"] },
+  { time: "7PM", cells: ["booked", "booked", "open", "booked"] },
+  { time: "8PM", cells: ["peak", "open", "booked", "peak"] },
+  { time: "9PM", cells: ["open", "booked", "booked", "open"] },
+];
+
 export default function ProjectPreviewMockup({ projectId, isHovered }) {
   const { mode } = useTheme();
   const isLight = mode === "light";
@@ -82,46 +90,51 @@ export default function ProjectPreviewMockup({ projectId, isHovered }) {
           </div>
         );
 
-      case "cookithow":
+      case "court-reservation":
         return (
-          <div className="mockup-ui mockup-cookithow">
+          <div className="mockup-ui mockup-court">
             <div className="mockup-header-bar">
               <div className="mockup-dots">
                 <span className="dot dot--red" />
                 <span className="dot dot--yellow" />
                 <span className="dot dot--green" />
               </div>
-              <span className="mockup-url-pill font-mono">cookithow.web/recipe/garlic-pasta</span>
-              <span className="mockup-badge-live font-mono">TIMER 14:20</span>
+              <span className="mockup-url-pill font-mono">venue/slots?date=today</span>
+              <span className="mockup-badge-live font-mono">
+                <span className="court-rec-dot" /> REC ARMED
+              </span>
             </div>
 
-            <div className="mockup-body mockup-recipe-steps">
-              <div className="recipe-step-header font-mono">
-                <span className="step-badge">STEP 03 / 06</span>
-                <span className="step-title">Simmer garlic in olive oil at 180°C</span>
+            <div className="mockup-body court-body font-mono">
+              <div className="court-grid">
+                <span />
+                {COURTS.map((c) => (
+                  <span key={c} className="court-col-label">{c}</span>
+                ))}
+                {COURT_SLOTS.map(({ time, cells }, row) => (
+                  <React.Fragment key={time}>
+                    <span className="court-time">{time}</span>
+                    {cells.map((state, col) => {
+                      const isPick = isHovered && row === 2 && col === 1;
+                      return (
+                        <span
+                          key={col}
+                          className={`court-slot court-slot--${isPick ? "picked" : state}`}
+                        />
+                      );
+                    })}
+                  </React.Fragment>
+                ))}
               </div>
-              <div className="recipe-timer-strip">
-                <div className="timer-track">
-                  <div className="timer-bar" style={{ width: isHovered ? "65%" : "40%" }} />
-                </div>
-                <div className="recipe-checklist font-mono">
-                  <span className="check-item check-item--done">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }}>
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                    4 Cloves Minced Garlic
-                  </span>
-                  <span className="check-item check-item--done">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }}>
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                    2 tbsp EV Olive Oil
-                  </span>
-                  <span className="check-item">
-                    <span style={{ opacity: 0.6, marginRight: "4px" }}>[ ]</span>
-                    Red Pepper Flakes
-                  </span>
-                </div>
+
+              <div className={`court-summary ${isHovered ? "court-summary--active" : ""}`}>
+                <span className="court-summary-label">
+                  {isHovered ? "COURT B · 8:00 PM" : "SELECT A SLOT"}
+                </span>
+                <span className="court-summary-price">
+                  {isHovered ? "₱650/hr" : "—"}
+                </span>
+                <span className="court-summary-tag">{isHovered ? "PEAK RATE" : "4 OPEN"}</span>
               </div>
             </div>
           </div>
