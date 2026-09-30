@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import {
   siReact, siNextdotjs, siTypescript, siVite, siTailwindcss, siHtml5, siCss,
-  siNodedotjs, siExpress, siPython, siFastapi,
-  siMongodb, siPostgresql, siMysql, siRedis, siPrisma,
+  siInertia, siMui, siReactrouter, siLeaflet,
+  siPhp, siLaravel, siNodedotjs, siExpress, siPython, siFastapi,
+  siMongodb, siMongoose, siPostgresql, siMysql, siRedis, siPrisma,
+  siFlutter, siDart,
   siGit, siGithub, siDocker, siVercel, siLinux, siFigma,
   siTrpc, siBun,
 } from "simple-icons";
@@ -11,9 +13,13 @@ import config from "../../../portfolio.config";
 const ICONS = {
   "React": siReact, "Next.js": siNextdotjs, "TypeScript": siTypescript, "Vite": siVite,
   "Tailwind CSS": siTailwindcss, "HTML5": siHtml5, "CSS3": siCss,
-  "Node.js": siNodedotjs, "Express": siExpress, "Python": siPython, "FastAPI": siFastapi,
-  "MongoDB": siMongodb, "PostgreSQL": siPostgresql, "MySQL": siMysql, "Redis": siRedis, "Prisma": siPrisma,
+  "Inertia.js": siInertia, "Material UI": siMui, "React Router": siReactrouter, "React Leaflet": siLeaflet,
+  "PHP": siPhp, "Laravel": siLaravel, "Node.js": siNodedotjs, "Express": siExpress,
+  "Python": siPython, "FastAPI": siFastapi,
+  "MongoDB": siMongodb, "Mongoose": siMongoose, "PostgreSQL": siPostgresql, "MySQL": siMysql,
+  "Redis": siRedis, "Prisma": siPrisma,
   "Git": siGit, "GitHub": siGithub, "Docker": siDocker, "Vercel": siVercel, "Linux": siLinux, "Figma": siFigma,
+  "Flutter": siFlutter, "Dart": siDart,
   "tRPC": siTrpc, "Bun": siBun,
 };
 

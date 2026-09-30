@@ -17,14 +17,14 @@ const config = {
 
   bio: {
     heroHeadline: {
-      line1: "BUILDING",
-      line2: "ROBUST",
-      line3: "SYSTEMS",
+      line1: "FROM",
+      line2: "IDEA",
+      line3: "TO LAUNCH",
     },
     subtitle: "PORTFOLIO 2026",
     line1:
-      "Developing scalable, high-performance web applications and software systems with a focus on clean code and",
-    highlight: "intuitive design.",
+      "I design and build web and mobile products end to end, with React, Laravel and Flutter. Clean interfaces, reliable backends,",
+    highlight: "shipped on time.",
     basedIn: "QUEZON CITY, PH",
     focusedOn: "Full Stack & MERN Development",
     learning: "LLM Orchestration & System Analytics",
@@ -41,15 +41,22 @@ const config = {
   tools: [
     {
       category: "FRONTEND",
-      items: ["React", "Next.js", "TypeScript", "Vite", "Tailwind CSS", "HTML5", "CSS3"],
+      items: [
+        "React", "Next.js", "TypeScript", "Inertia.js", "Vite", "Tailwind CSS",
+        "Material UI", "React Router", "React Leaflet", "HTML5", "CSS3",
+      ],
     },
     {
       category: "BACKEND",
-      items: ["Node.js", "Express", "Python", "FastAPI", "REST APIs"],
+      items: ["PHP", "Laravel", "Node.js", "Express", "Python", "FastAPI", "REST APIs"],
     },
     {
       category: "DATABASE",
-      items: ["MongoDB", "PostgreSQL", "MySQL", "Redis", "Prisma"],
+      items: ["MySQL", "MongoDB", "Mongoose", "PostgreSQL", "Redis", "Prisma"],
+    },
+    {
+      category: "MOBILE",
+      items: ["Flutter", "Dart"],
     },
     {
       category: "DEVOPS",

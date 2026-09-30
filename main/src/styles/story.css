@@ -291,8 +291,8 @@ html.js-reveal .reveal.is-in {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 400;
-  /* "BUILDING ROBUST" spans the full column width */
-  font-size: 13.2cqi;
+  /* The longer headline line spans the column; capped so both lines fit the stage */
+  font-size: min(21cqi, 24vh);
   line-height: 0.86;
   letter-spacing: 0.005em;
   text-transform: uppercase;
@@ -452,11 +452,7 @@ html.js-reveal .reveal.is-in {
   }
 
   .hero-story-title {
-    font-size: 25cqi;
-  }
-
-  .hero-word-accent {
-    display: block;
+    font-size: 21cqi;
   }
 
   .hero-scroll-cue {
@@ -1094,10 +1090,14 @@ html.js-reveal .reveal.is-in {
   color: var(--paper-muted);
 }
 
-/* Footer sits back on the page background */
+/* Footer continues the paper panel as a full-width white band */
 .contact-footer {
-  border-top: 0;
-  color: var(--text-muted);
+  width: 100vw;
+  margin: 0 0 0 calc(50% - 50vw);
+  padding: 22px max(28px, calc(50vw - 640px + 28px));
+  background: #f6f5f2;
+  border-top: 1px solid #e3e2dd;
+  color: #3b3b43;
 }
 
 @media (max-width: 960px) {
@@ -1121,4 +1121,13 @@ html.js-reveal .reveal.is-in {
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+/* ── 02 · Stack: six categories, Learning runs full width underneath ── */
+.stack-tile--learning {
+  grid-column: 1 / -1;
+}
+
+.stack-tile--learning .stack-tools {
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
 }

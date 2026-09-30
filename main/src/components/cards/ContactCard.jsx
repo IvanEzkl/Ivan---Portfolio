@@ -273,7 +273,7 @@ export default function ContactCard({ header }) {
           © 2026 IVAN EZEKIEL — ALL RIGHTS RESERVED
         </span>
         <span className="contact-footer-right">
-          BUILT WITH REACT + VITE + TAILWIND CSS
+          BUILT WITH <span role="img" aria-label="love">❤️</span>
         </span>
       </footer>
     </div>
