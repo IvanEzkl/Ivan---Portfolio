@@ -34,7 +34,7 @@ export default function WorkShowcase({ projects = config.projects, showStats = t
           >
             {projects.map((project) => {
               const isActive = activeId === project.id;
-              const href = project.github || (project.url && `https://${project.url}`);
+              const href = project.url;
               const Tile = href ? "a" : "article";
               const linkProps = href
                 ? { href, target: "_blank", rel: "noreferrer" }
