@@ -26,12 +26,6 @@ const ICONS = {
 // Bento placement per category; anything unlisted falls back to a default tile
 const TILE_SIZES = { FRONTEND: "hero", DEVOPS: "wide", LEARNING: "learning" };
 
-// "Tailwind CSS" ↔ "TAILWIND", "Node.js" ↔ "NODE.JS"
-const normalize = (s) => s.toLowerCase().replace(/\s*css$/, "").replace(/\.js$/, "").replace(/[^a-z0-9]/g, "");
-
-const projectsUsing = (tool) =>
-  config.projects.filter((p) => p.tags.some((t) => normalize(t) === normalize(tool)));
-
 function ToolIcon({ name }) {
   const icon = ICONS[name];
   if (!icon) {
@@ -52,7 +46,6 @@ export default function StackCard() {
     <div className="stack-bento">
       {config.tools.map((group) => {
         const activeHere = active && group.items.includes(active) ? active : null;
-        const usedIn = activeHere ? projectsUsing(activeHere) : [];
         const size = TILE_SIZES[group.category] || "default";
 
         return (
@@ -85,20 +78,14 @@ export default function StackCard() {
 
             <div className="stack-tile-foot font-mono" aria-live="polite">
               {activeHere ? (
-                usedIn.length ? (
-                  <>
-                    <span className="stack-foot-label">USED IN</span>
-                    {usedIn.map((p) => (
-                      <span key={p.id} className="stack-foot-project">{p.title}</span>
-                    ))}
-                  </>
-                ) : (
-                  <span className="stack-foot-label">NOT IN FEATURED PROJECTS YET</span>
-                )
+                <p className="stack-foot-note">
+                  <span className="stack-foot-tool">{activeHere}</span>
+                  {config.toolNotes?.[activeHere] || "A tool I work with."}
+                </p>
               ) : (
                 <span className="stack-foot-hint">
                   <span className="hint-pointer">HOVER</span>
-                  <span className="hint-touch">TAP</span> A TOOL TO SEE WHERE I USED IT
+                  <span className="hint-touch">TAP</span> A TOOL TO SEE HOW AND WHY I USE IT
                 </span>
               )}
             </div>

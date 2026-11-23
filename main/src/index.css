@@ -2386,6 +2386,24 @@ svg {
   color: var(--text-muted);
 }
 
+.stack-foot-note {
+  margin: 0;
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--text);
+}
+
+.stack-foot-tool {
+  margin-right: 8px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .stack-foot-project {
   padding: 2px 7px;
   color: var(--accent);
